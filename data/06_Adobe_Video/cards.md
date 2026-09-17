@@ -132,31 +132,7 @@ Landing: https://www.adobe.com/in/products/premiere.html
 Files: 11_323d_Try-in-Premiere-Pro-beta.mp4
 Foreplay: https://app.foreplay.co/discovery?ad=LmmLRUEqHVI2vBfhDOZd
 
-## 12 · 314 days · DCO
-Hook: 您的故事，快照呈現
-
-Headline: 您的故事，快照呈現
-
-Primary text:
-像影片創作者 Celina Bhandari 一樣拍攝最喜歡的時刻，並分享作品。開始使用 Adobe Premiere Pro。
-
-Landing: https://www.adobe.com/tw/products/premiere.html
-Files: 12_314d_ad_v1.jpg; 12_314d_ad_v2.jpg; 12_314d_ad_v3.jpg
-Foreplay: https://app.foreplay.co/discovery?ad=NuLcskhEEFBsl2qrkrO2
-
-## 13 · 314 days · DCO
-Hook: 您的故事，快照呈現
-
-Headline: 您的故事，快照呈現
-
-Primary text:
-像影片創作者 Celina Bhandari 一樣拍攝最喜歡的時刻，並分享作品。開始使用 Adobe Premiere Pro。
-
-Landing: https://www.adobe.com/tw/products/premiere.html
-Files: 13_314d_ad_v1.jpg; 13_314d_ad_v2.jpg; 13_314d_ad_v3.jpg
-Foreplay: https://app.foreplay.co/discovery?ad=I052x9ysABkI8jKh9jYK
-
-## 14 · 278 days · DCO
+## 12 · 278 days · DCO
 Hook: Try Premiere Pro for free.
 
 Headline: Try Premiere Pro for free.
@@ -165,10 +141,10 @@ Primary text:
 Switch between crops without losing your subject — with Adobe Premiere Pro.
 
 Landing: https://www.adobe.com/uk/products/premiere.html
-Files: 14_278d_Try-Premiere-Pro-for-free_v1.mp4; 14_278d_Try-Premiere-Pro-for-free_v2.mp4; 14_278d_Try-Premiere-Pro-for-free_v3.mp4
+Files: 12_278d_Try-Premiere-Pro-for-free_v1.mp4; 12_278d_Try-Premiere-Pro-for-free_v2.mp4; 12_278d_Try-Premiere-Pro-for-free_v3.mp4
 Foreplay: https://app.foreplay.co/discovery?ad=5T1eF64E0NpcfMivJ8Z1
 
-## 15 · 254 days · IMAGE
+## 13 · 254 days · IMAGE
 Hook: Make focused edits, fast.
 
 Headline: Make focused edits, fast.
@@ -177,6 +153,6 @@ Primary text:
 Shape masks now keep up with your creativity, tracking up to 20x faster in Premiere (beta).
 
 Landing: https://www.adobe.com/africa/products/premiere.html?sdid=JZBJVTRS&mv=social&mv2=paidsoc
-Files: 15_254d_Make-focused-edits-fast.png
+Files: 13_254d_Make-focused-edits-fast.png
 Foreplay: https://app.foreplay.co/discovery?ad=RzXR9H2ucO9fuJvbAtcN
 

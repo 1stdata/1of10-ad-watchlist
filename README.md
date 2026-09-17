@@ -1,6 +1,6 @@
 # 1of10 Ad Watchlist
 
-Competitor ad review for 1of10: the longest-running live Meta ads for 9 tracked brands (vidIQ, OpusClip, Skool, Alex Hormozi, Canva, Adobe Video, Adobe, Slack, ClickFunnels), pulled from Foreplay on 2026-09-16, with a "Replicate first" set ranked by similarity to the 1of10 Video Editor.
+Competitor ad review for 1of10: the longest-running live Meta ads for 25 brands (vidIQ, OpusClip, Skool, Alex Hormozi, Canva, Adobe Video, Adobe, Slack, ClickFunnels, plus Descript, CapCut, VEED, InVideo, Filmora, Ableton, Splice, Native Instruments, HubSpot, Hootsuite, Northbeam, AG1, Momentous, Thorne, Transparent Labs, Seed), pulled from Foreplay on 2026-09-16 and 2026-09-17, with a "Replicate first" set ranked by similarity to the 1of10 Video Editor.
 
 Live site: https://1stdata.github.io/1of10-ad-watchlist/
 
@@ -19,3 +19,7 @@ Decisions save in your browser between visits and travel to others only through 
 - `data/statics_index.csv` and `.json`: every static ad with brand, rank, days running, format, CTA, headline, primary text, card text, landing URL, image URLs and Foreplay link.
 - `data/ads_index.csv` and `.json`: every ad with brand, rank, days running, format, CTA, hook, headline, primary text, transcript, landing URL, placements and Foreplay link.
 - `data/<brand>/`: per-brand `ads.csv`, `cards.md` and `media_urls.txt`.
+
+## Brands that could not be added
+
+Gling, Palmier and DaVinci Resolve have no Foreplay brand page. Higgsfield, Buffer, Think Media and Sean Cannell have no live Meta ads (Think Media and Sean Cannell only have TikTok posts indexed). Logic Pro and FL Studio have no ad pages. Not in Foreplay means not in the Meta Ad Library as a tracked advertiser.

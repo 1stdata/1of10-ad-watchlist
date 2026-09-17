@@ -1,4 +1,4 @@
-# one line per file: URL<TAB>save-as filename (paste into a downloader, or: xargs -n2 curl -L -o)
+# URL<TAB>filename
 https://r2.foreplay.co/003fd605cd293207c1dd3745680aeb4bd7b29fa33c62dbb5d62cb038f028911a.mp4	01_359d_Try-in-Premiere-Pro-beta_v1.mp4
 https://r2.foreplay.co/5a4d12592f7d77e44660d39ce2ab5dd1d031dc6f9e7d3c409ed43dd46ae88bbf.mp4	01_359d_Try-in-Premiere-Pro-beta_v2.mp4
 https://r2.foreplay.co/8bbdebdb2e8bca57fd63adada178cea0161ea1d9134700aec65b207bb918b51e.mp4	02_359d_Fewer-clicks-more-control_v1.mp4

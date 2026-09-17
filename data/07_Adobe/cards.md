@@ -1,4 +1,4 @@
-# Adobe — top 15 longest-running live Meta ads (pulled 2026-09-16)
+# Adobe (pulled 2026-09-16)
 
 ## 01 · 520 days · DCO
 Hook: Tüm Uygulamalar indirimi.

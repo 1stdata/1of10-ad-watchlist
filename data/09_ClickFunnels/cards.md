@@ -1,4 +1,4 @@
-# ClickFunnels — top 15 longest-running live Meta ads (pulled 2026-09-16)
+# ClickFunnels (pulled 2026-09-16)
 
 ## 01 · 189 days · DCO
 Hook: I had been trying to make money on the internet for a long time. The only person that really believed me was my wife, but finally made my very first sale that gave you belief that this was real You need your first win you need your firs customer we didn't make her purse thousand dollars That way he can say actually did it and not so crazy something called The one comic book challenge and once u hit where sending one of these because users are something who can hold symbol in remind us as i divide refers thousands will now make you rich, but it will give you belief. Belief that this actually works and more importantly belief that'll actually work for you so with that said welcome to the One Common Club Challenge now let's go get started and earn your first sale

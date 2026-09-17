@@ -1,4 +1,4 @@
-# OpusClip — top 15 longest-running live Meta ads (pulled 2026-09-16)
+# OpusClip (pulled 2026-09-16)
 
 ## 01 · 442 days · VIDEO
 Hook: The best podcast software, OpusClip just got more affordable. You give it any long video and it creates 10 short viral clips from that one video drop a YouTube link or actually It takes all kinds of links click get clips and in like A few minutes you have 10 viral videos ready to go gives you score out Of 100 based on how likely the AI thinks is To Go Viral but It doesn't just pick viral moments, it reframes everything for you and does the captions. You can download it or schedule to post later straight to your favorite platform and you can actually export two premier pro now there's a free version that gets me like 25 clips of month but right now YoU cAn GeT 50% Off On ThE yEuRlY pRo PlAiN That'S PrEtTY gOoD

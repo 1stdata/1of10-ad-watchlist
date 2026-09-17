@@ -1,4 +1,4 @@
-# Skool — top 15 longest-running live Meta ads (pulled 2026-09-16)
+# Skool (pulled 2026-09-16)
 
 ## 01 · 434 days · VIDEO
 Hook: 64,000 per month with a school about dog poop. Yeah seriously these guys teach people how to start their own dog poop removal business using this thing called school 900 members paying $69 dollars A month equals sixty four thousand dollars Inside step-by step training live coaching calls the whole community scooping Poop and stacking money schools full of stories like This chess beekeeping martial arts AI even picking up Poop so what are you passionate about make a school on it! Click the button and get started for free.

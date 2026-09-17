@@ -1,4 +1,4 @@
-# one line per file: URL<TAB>save-as filename (paste into a downloader, or: xargs -n2 curl -L -o)
+# URL<TAB>filename
 https://r2.foreplay.co/29388700474076730/ec6a16e68d858bc759f699f97fcd156a.mp4	01_520d_Slack_v1.mp4
 https://r2.foreplay.co/29388700474076730/a92d1565d11b37b5534963b1eb7258d0.mp4	01_520d_Slack_v2.mp4
 https://r2.foreplay.co/23917271341239190/21e2472742265d83023f579cfde5391c.mp4	02_467d_Setze-Projekte-mit-Slack-in-k-rzerer-Zei_v1.mp4

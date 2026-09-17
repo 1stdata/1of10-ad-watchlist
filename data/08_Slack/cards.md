@@ -1,4 +1,4 @@
-# Slack — top 15 longest-running live Meta ads (pulled 2026-09-16)
+# Slack (pulled 2026-09-16)
 
 ## 01 · 520 days · DCO
 Hook: スラックでプロジェクトをもっと効率化 投稿したり ミーティングしたら タッシュコーン整理して Slackなら仕事がはかどります

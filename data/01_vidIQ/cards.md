@@ -1,4 +1,4 @@
-# vidIQ — top 15 longest-running live Meta ads (pulled 2026-09-16)
+# vidIQ (pulled 2026-09-16)
 
 ## 01 · 411 days · DCO
 Hook: I know why nobody's watching your YouTube videos. It is not because your content isn't good, it is because you can not hook attention! So let me tell you what you can do about that... Start with a bold question A surprising fact or the exact problem Your video will solve Because if YOU don´T grab them fast they'll never see the rest of what YOU have to say Notice how YOUR still paying attention? Yeah Click on this link To learn how TO DO THIS For YOUR videos

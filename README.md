@@ -15,7 +15,7 @@ Decisions save in your browser between visits and travel to others only through 
 ## Files
 
 - `index.html`: the video watchlist.
-- `scripts.html`: Brent's approved ads rewritten beat by beat for the AI Video Editor and the AI Thumbnail Generator, with shooting notes. Rewrites are editable in place and every cell has a comment thread; reviewers type their name once. Edits and comments are stored in a Supabase project (tables in `supabase_setup.sql`; the page reads the project URL and anon key from the `CFG` line near the end of the file). Without those two values the page is read-only.
+- `scripts.html`: Brent's approved ads rewritten beat by beat for the AI Video Editor and the AI Thumbnail Generator, with shooting notes. Anyone with the link can comment and reply (name typed once). Only the owner, after signing in with a passphrase on the page, can edit the rewrites and mark comments approved or done; the passphrase is checked by the database, never by the page. Data lives in the Supabase project 1of10-ad-watchlist (tables and functions in `supabase_setup.sql`; the page reads the project URL and publishable key from the `CFG` line near the end of the file).
 - `statics.html`: the static (image and carousel) watchlist, with a "Statics to test" set ranked the same way. Pulled 2026-09-17.
 - `data/statics_index.csv` and `.json`: every static ad with brand, rank, days running, format, CTA, headline, primary text, card text, landing URL, image URLs and Foreplay link.
 - `data/ads_index.csv` and `.json`: every ad with brand, rank, days running, format, CTA, hook, headline, primary text, transcript, landing URL, placements and Foreplay link.

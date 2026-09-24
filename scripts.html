@@ -182,18 +182,29 @@ td:first-child{font-family:"Geist Mono",monospace;color:var(--muted)}
 .allc .item .k{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted)}
 .allc .item a{font-family:"Geist Mono",monospace;font-size:11px;color:var(--ink)}
 .allc .empty{padding:14px;color:var(--muted);font-size:14px}
+.pill{display:inline-block;font-family:"Geist Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border:1px solid var(--line2);margin-left:6px;vertical-align:1px;color:var(--muted)}
+.pill.open{border-color:var(--ink);color:var(--ink)}
+.pill.approved{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.pill.done{background:var(--bg)}
+.c.reply{margin:8px 0 0 14px;border-left:3px solid var(--line2);background:var(--surface)}
+.tools .cm.appr{background:var(--ok-bg);color:var(--ok);border-color:var(--ok)}
+.compose .lnk{background:transparent;color:var(--ink);border:0;padding:0;font-family:"Geist Mono",monospace;font-size:11px;text-decoration:underline;cursor:pointer}
+.namegate .ghost{background:var(--surface);color:var(--ink)}
+.namegate .msg{color:var(--no);min-height:1em}
+.rs[hidden]{display:none}
+.owner .cellwrap.changed .mark{display:block}
 @media (prefers-reduced-motion: reduce){.panel,.cellwrap .tools{transition:none}}
 </style></head><body>
 <div class="top">
 <div><div class="eyebrow">Brent's approvals · 6 videos · 4 statics · rewritten 2026-09-23</div>
 <h1>1of10 Script Rewrites</h1></div>
-<p class="lede">Each approved ad, beat by beat: the original line, the same beat rewritten for the AI Video Editor and for the AI Thumbnail Generator, and what to shoot. Click any rewrite to edit it. Hover a cell and press Comment to start a thread on it. Everyone with this link sees the same edits and comments. <a href="index.html">Video watchlist</a> · <a href="statics.html">Static watchlist</a></p>
+<p class="lede">Each approved ad, beat by beat: the original line, the same beat rewritten for the AI Video Editor and for the AI Thumbnail Generator, and what to shoot. Hover any cell and press Comment to leave a note or reply; the owner edits the copy and marks comments approved or done. Everyone with this link sees the same edits and comments. <a href="index.html">Video watchlist</a> · <a href="statics.html">Static watchlist</a></p>
 </div>
 <nav class="brands"><div class="navin"><span class="grp">Videos</span><a href="#s-tvujpTzj1TxLFH830Gvj">OpusClip 362d</a><a href="#s-S3AoTqvHHP5QG4GDUPz3">OpusClip 438d</a><a href="#s-PwAn3GFiBdJIgkEAFmUa">OpusClip 189d</a><a href="#s-b6eVS9OophTKmzDdjPq9">OpusClip 186d</a><a href="#s-fu4azpG1WMPMBiRcJ5rt">OpusClip 186d</a><a href="#s-JXlahI9YXbOMPjWHFOfM">Native Instruments 360d</a><span class="grp">Statics</span><a href="#s-mRFEytPG1ZXiad96JR27">Canva static</a><a href="#s-aivDb9BekI6vzHi1pLzP">VEED static</a><a href="#s-7iTHjQuShM91o95thLW8">VEED static</a><a href="#s-K8wDRMMI2n39o42WtTzu">vidIQ static</a><a href="#comments" class="sw">All comments</a></div></nav>
 <div class="bar" id="rbar">
 <label for="reviewer">Your name <input id="reviewer" type="text" placeholder="Type it once" autocomplete="name"></label>
-<button type="button" id="editmode" aria-pressed="true">Editing on</button>
-<span>Original lines stay fixed. Rewrites and shooting notes are editable.</span>
+<button type="button" id="ownerbtn">Owner sign-in</button>
+<span id="modeline">Reviewers: hover a cell and press Comment. Only the owner can edit the copy.</span>
 <span class="st" id="st">Loading…</span>
 </div>
 <div class="intro"><p>Products as described on 1of10.com: the Video Editor (AutoCut, Auto Retakes, Auto Animations, Color Grading, Auto Sync, Audio Enhance; free early access via waitlist) and the Thumbnail Generator (connect your channel, type a title, thumbnails in about 90 seconds, edit with AI; free plan, generator on Pro). Placeholder numbers like "2 million views" are for a real creator's real number.</p>
@@ -278,8 +289,9 @@ td:first-child{font-family:"Geist Mono",monospace;color:var(--muted)}
 </div>
 <ol class="steps"><li>Open with &#x27;Stuck at [specific milestone]?&#x27; The milestone must be one the viewer would say about themselves.</li><li>Follow with &#x27;Stop guessing [thing].&#x27;</li><li>One sentence with three outcomes.</li><li>Close with the offer as a badge in the image and the last sentence in the copy.</li><li>Text-led image: numbers large, product small.</li></ol>
 </section>
-<section class="allc" id="comments"><header class="bh"><div><h2>All comments</h2></div><dl class="stats"><div><dt>Status</dt><dd id="allcount" style="font-size:13px;font-family:'Geist Mono',monospace;font-weight:400">…</dd></div></dl></header><div class="list" id="alllist"><div class="empty">Loading…</div></div></section>
-<aside class="panel" id="panel" aria-label="Comments"><header><h3>Comments</h3><button type="button" id="pclose">Close</button></header><div class="ctx" id="ctx"></div><div class="thread" id="thread"></div><div class="compose"><textarea id="ctext" placeholder="Write a comment…"></textarea><div class="row"><span>Ctrl/Cmd + Enter to post</span><button type="button" id="csend">Post</button></div></div></aside>
+<section class="allc" id="comments"><header class="bh"><div><h2>All comments</h2><div class="counts" id="allfilter" style="margin-top:8px"><button type="button" data-f="open" aria-pressed="true">Open</button><button type="button" data-f="approved" aria-pressed="false">Approved</button><button type="button" data-f="done" aria-pressed="false">Done</button><button type="button" data-f="all" aria-pressed="false">All</button></div></div><dl class="stats"><div><dt>Status</dt><dd id="allcount" style="font-size:13px;font-family:'Geist Mono',monospace;font-weight:400">…</dd></div></dl></header><div class="list" id="alllist"><div class="empty">Loading…</div></div></section>
+<aside class="panel" id="panel" aria-label="Comments"><header><h3>Comments</h3><button type="button" id="pclose">Close</button></header><div class="ctx" id="ctx"></div><div class="thread" id="thread"></div><div class="compose"><div class="row" id="replyline" hidden><span id="replyto"></span><button type="button" id="replycancel" class="lnk">Cancel reply</button></div><textarea id="ctext" placeholder="Write a comment…"></textarea><div class="row"><span>Ctrl/Cmd + Enter to post</span><button type="button" id="csend">Post</button></div></div></aside>
+<div class="namegate" id="ownergate"><div class="box"><h3>Owner sign-in</h3><p>Enter the owner passphrase to edit the copy and approve or complete comments. It is remembered on this device.</p><input id="ownersecret" type="password" placeholder="Passphrase" autocomplete="off"><p id="ownermsg" class="msg"></p><div style="display:flex;gap:8px"><button type="button" id="ownerok">Sign in</button><button type="button" id="ownercancel" class="ghost">Cancel</button></div></div></div>
 <div class="namegate" id="namegate"><div class="box"><h3>What's your name?</h3><p>It's shown next to your comments and edits, and remembered on this device.</p><input id="gatename" type="text" placeholder="Your name" autocomplete="name"><button type="button" id="gateok">Continue</button></div></div>
 <script>
 (function(){
@@ -289,8 +301,9 @@ td:first-child{font-family:"Geist Mono",monospace;color:var(--muted)}
   var cells={}; document.querySelectorAll('.cellwrap').forEach(function(w){cells[w.getAttribute('data-cell')]=w;});
   function textOf(el){return el.innerText.replace(/ /g,' ').replace(/\n{3,}/g,'\n\n').trim();}
   function setText(el,t){el.innerHTML=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g,'<br>');}
-  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
   function markChanged(key){var w=cells[key];if(!w)return;w.classList.toggle('changed',textOf(w.querySelector('.ed'))!==(ORIG[key]||'').trim());}
+  function fmt(ts){try{var d=new Date(ts);return d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})+', '+d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});}catch(e){return '';}}
   // ---- name ----
   var NKEY='1of10-scripts-name'; var name='';
   try{name=localStorage.getItem(NKEY)||'';}catch(e){}
@@ -302,22 +315,36 @@ td:first-child{font-family:"Geist Mono",monospace;color:var(--muted)}
   gateIn.addEventListener('keydown',function(ev){if(ev.key==='Enter')document.getElementById('gateok').click();});
   // ---- supabase rest ----
   var live=!!(CFG.url&&CFG.anon);
-  function api(path,opts){opts=opts||{};var h={'apikey':CFG.anon,'Content-Type':'application/json'}; if(CFG.anon.indexOf('eyJ')===0) h['Authorization']='Bearer '+CFG.anon;if(opts.prefer)h['Prefer']=opts.prefer;
-    return fetch(CFG.url+'/rest/v1/'+path,{method:opts.method||'GET',headers:h,body:opts.body?JSON.stringify(opts.body):undefined}).then(function(r){if(!r.ok)return r.text().then(function(t){throw new Error(r.status+' '+t);});return r.status===204?null:r.json();});}
+  function api(path,opts){opts=opts||{};var h={'apikey':CFG.anon,'Content-Type':'application/json'}; if(CFG.anon.indexOf('eyJ')===0) h['Authorization']='Bearer '+CFG.anon; if(opts.prefer)h['Prefer']=opts.prefer;
+    return fetch(CFG.url+'/rest/v1/'+path,{method:opts.method||'GET',headers:h,body:opts.body?JSON.stringify(opts.body):undefined}).then(function(r){return r.text().then(function(t){ if(!r.ok){var msg=t; try{msg=JSON.parse(t).message||t;}catch(e){} throw new Error(r.status+' '+msg);} return t?JSON.parse(t):null; });});}
+  function rpc(fn,args){return api('rpc/'+fn,{method:'POST',body:args});}
+  // ---- owner ----
+  var SKEY='1of10-scripts-owner'; var secret=''; var isOwner=false;
+  try{secret=localStorage.getItem(SKEY)||'';}catch(e){}
+  var ownerBtn=document.getElementById('ownerbtn'), ogate=document.getElementById('ownergate'), ogIn=document.getElementById('ownersecret'), ogMsg=document.getElementById('ownermsg');
+  function setOwner(on){ isOwner=on; document.body.classList.toggle('owner',on); ownerBtn.textContent=on?'Editing as owner':'Owner sign-in';
+    document.querySelectorAll('.ed[data-key]').forEach(function(ed){ if(ORIG.hasOwnProperty(ed.getAttribute('data-key'))) ed.setAttribute('contenteditable',on?'true':'false'); });
+    document.querySelectorAll('.rs').forEach(function(b){b.hidden=!on;});
+    document.getElementById('modeline').textContent=on?'You can edit the rewrites and shooting notes. Everyone else can comment.':'Reviewers: hover a cell and press Comment. Only the owner can edit the copy.';
+    renderThread(); }
+  function verifyOwner(s,cb){ if(!live){cb(false);return;} rpc('check_owner',{p_secret:s}).then(function(ok){cb(ok===true);}).catch(function(){cb(false);}); }
+  ownerBtn.addEventListener('click',function(){ if(isOwner){ if(!confirmSignOut){confirmSignOut=true; ownerBtn.textContent='Click again to sign out'; setTimeout(function(){confirmSignOut=false; if(isOwner)ownerBtn.textContent='Editing as owner';},2500); return;} secret=''; try{localStorage.removeItem(SKEY);}catch(e){} setOwner(false); return; }
+    ogMsg.textContent=''; ogIn.value=''; ogate.classList.add('show'); setTimeout(function(){ogIn.focus();},50); });
+  var confirmSignOut=false;
+  document.getElementById('ownerok').addEventListener('click',function(){ var s=ogIn.value; if(!s)return; ogMsg.textContent='Checking…';
+    verifyOwner(s,function(ok){ if(ok){secret=s; try{localStorage.setItem(SKEY,s);}catch(e){} ogate.classList.remove('show'); setOwner(true); setStatus('Signed in as owner','on');} else {ogMsg.textContent='That passphrase did not match.';} }); });
+  document.getElementById('ownercancel').addEventListener('click',function(){ogate.classList.remove('show');});
+  ogIn.addEventListener('keydown',function(ev){if(ev.key==='Enter')document.getElementById('ownerok').click();});
   // ---- edits ----
-  var edits={}; // cell_key -> {text,author,updated_at}
-  var pending={}, timers={}, lastEditSync=null;
-  function applyEdit(key,rec){var w=cells[key]; if(!w)return; var ed=w.querySelector('.ed'); if(!ed.hasAttribute('contenteditable'))return; if(document.activeElement===ed)return;
+  var edits={}, pending={}, timers={};
+  function applyEdit(key,rec){var w=cells[key]; if(!w)return; var ed=w.querySelector('.ed'); if(!ORIG.hasOwnProperty(key))return; if(document.activeElement===ed)return;
     var t=rec&&typeof rec.text==='string'?rec.text:(ORIG[key]||''); if(textOf(ed)!==t.trim())setText(ed,t); markChanged(key);}
-  function scheduleSave(key){ if(!live){setStatus('Not connected: edits stay on this device only','err');return;}
+  function scheduleSave(key){ if(!live){setStatus('Not connected: edits stay on this device only','err');return;} if(!isOwner){return;}
     needName(function(){ pending[key]=textOf(cells[key].querySelector('.ed')); clearTimeout(timers[key]); timers[key]=setTimeout(function(){flush(key);},900); setStatus('Unsaved changes…'); }); }
   function flush(key){ var t=pending[key]; delete pending[key]; if(t===undefined)return;
-    var isOrig=t===(ORIG[key]||'').trim();
-    setStatus('Saving…');
-    var p=isOrig? api('script_edits?cell_key=eq.'+encodeURIComponent(key),{method:'DELETE'})
-                : api('script_edits',{method:'POST',prefer:'resolution=merge-duplicates,return=minimal',body:{cell_key:key,text:t,author:name,updated_at:new Date().toISOString()}});
-    p.then(function(){ if(isOrig)delete edits[key]; else edits[key]={text:t,author:name}; setStatus('Saved for everyone','on'); })
-     .catch(function(err){setStatus('Could not save: '+err.message.slice(0,80),'err');});
+    var isOrig=t===(ORIG[key]||'').trim(); setStatus('Saving…');
+    rpc('save_edit',{p_key:key,p_text:isOrig?'':t,p_author:name,p_secret:secret}).then(function(){ if(isOrig)delete edits[key]; else edits[key]={text:t,author:name}; setStatus('Saved for everyone','on'); })
+     .catch(function(err){ if(/not owner|42501|permission/i.test(err.message)){secret='';try{localStorage.removeItem(SKEY);}catch(e){} setOwner(false); setStatus('Owner sign-in expired. Sign in again to save edits.','err');} else setStatus('Could not save: '+err.message.slice(0,80),'err');});
   }
   function loadEdits(){ if(!live)return Promise.resolve();
     return api('script_edits?select=cell_key,text,author,updated_at').then(function(rows){
@@ -325,49 +352,60 @@ td:first-child{font-family:"Geist Mono",monospace;color:var(--muted)}
       Object.keys(edits).forEach(function(k){ if(!seen[k]){delete edits[k]; applyEdit(k,null);} });
     });
   }
-  document.querySelectorAll('.ed[contenteditable="true"]').forEach(function(ed){var key=ed.getAttribute('data-key');
+  document.querySelectorAll('.ed[data-key]').forEach(function(ed){var key=ed.getAttribute('data-key'); if(!ORIG.hasOwnProperty(key))return;
     ed.addEventListener('input',function(){markChanged(key);scheduleSave(key);});
     ed.addEventListener('paste',function(ev){ev.preventDefault();var t=(ev.clipboardData||window.clipboardData).getData('text');document.execCommand('insertText',false,t);});
     ed.addEventListener('keydown',function(ev){if(ev.key==='Escape')ed.blur();});
   });
   document.querySelectorAll('.rs').forEach(function(b){b.addEventListener('click',function(){var w=b.closest('.cellwrap');var key=w.getAttribute('data-cell');setText(w.querySelector('.ed'),ORIG[key]||'');markChanged(key);scheduleSave(key);});});
-  var toggle=document.getElementById('editmode');
-  function setEditMode(on){toggle.setAttribute('aria-pressed',on?'true':'false');toggle.textContent=on?'Editing on':'Editing off';document.querySelectorAll('.ed[data-key]').forEach(function(ed){ if(ORIG.hasOwnProperty(ed.getAttribute('data-key'))) ed.setAttribute('contenteditable',on?'true':'false'); });try{localStorage.setItem('1of10-scripts-editmode',on?'1':'0');}catch(e){}}
-  toggle.addEventListener('click',function(){setEditMode(toggle.getAttribute('aria-pressed')!=='true');});
-  var em=true; try{em=localStorage.getItem('1of10-scripts-editmode')!=='0';}catch(e){} setEditMode(em);
   // ---- comments ----
-  var comments=[]; // {id,cell_key,author,body,created_at,resolved}
-  var panel=document.getElementById('panel'), thread=document.getElementById('thread'), ctx=document.getElementById('ctx'), openKey=null;
-  function byCell(){var m={};comments.forEach(function(c){(m[c.cell_key]=m[c.cell_key]||[]).push(c);});return m;}
-  function renderBadges(){var m=byCell();Object.keys(cells).forEach(function(k){var w=cells[k];var b=w.querySelector('.cm');var list=(m[k]||[]);var open=list.filter(function(c){return !c.resolved;}).length;
-    b.textContent=list.length?(open?open+' open':'resolved'):'Comment'; b.classList.toggle('has',list.length>0); b.classList.toggle('open',open>0); w.classList.toggle('hascom',list.length>0);});
-    renderAll();}
-  function fmt(ts){try{var d=new Date(ts);return d.toLocaleDateString(undefined,{month:'short',day:'numeric'})+' '+d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});}catch(e){return '';}}
-  function renderThread(){ if(!openKey)return; var list=byCell()[openKey]||[];
+  var comments=[]; var panel=document.getElementById('panel'), thread=document.getElementById('thread'), ctx=document.getElementById('ctx'), openKey=null, replyTo=null;
+  function isOpen(c){return (c.status||'open')==='open';}
+  function tops(key){return comments.filter(function(c){return c.cell_key===key&&!c.parent_id;});}
+  function replies(id){return comments.filter(function(c){return c.parent_id===id;});}
+  function renderBadges(){ Object.keys(cells).forEach(function(k){var w=cells[k];var b=w.querySelector('.cm');var list=tops(k);var open=list.filter(isOpen).length;var appr=list.filter(function(c){return c.status==='approved';}).length;
+    b.textContent=list.length?(open?open+' open':(appr?'approved':'done')):'Comment'; b.classList.toggle('has',list.length>0); b.classList.toggle('open',open>0); b.classList.toggle('appr',open===0&&appr>0); w.classList.toggle('hascom',list.length>0);});
+    renderAll(); }
+  function pill(c){var s=c.status||'open'; var t=s==='open'?'Open':(s==='approved'?'Approved':'Done'); var by=c.status_by?(' by '+esc(c.status_by)+(c.status_at?' · '+fmt(c.status_at):'')):''; return '<span class="pill '+s+'" title="'+by.replace(/"/g,'')+'">'+t+'</span>';}
+  function cHtml(c,isReply){ return '<div class="c'+(isReply?' reply':'')+(c.status==='done'?' resolved':'')+'" data-id="'+c.id+'"><div class="who"><span>'+esc(c.author||'Anonymous')+(isReply?'':' '+pill(c))+'</span><small>'+fmt(c.created_at)+'</small></div><div class="txt">'+esc(c.body)+'</div>'
+    +(isReply?'':'<div class="act"><button type="button" data-act="reply">Reply</button>'+(isOwner?'<button type="button" data-act="approved"'+(c.status==='approved'?' disabled':'')+'>Approve</button><button type="button" data-act="done"'+(c.status==='done'?' disabled':'')+'>Mark done</button>'+(c.status!=='open'?'<button type="button" data-act="open">Reopen</button>':''):'')+'</div>')
+    +(isReply?'':replies(c.id).map(function(r){return cHtml(r,true);}).join(''))+'</div>'; }
+  function renderThread(){ if(!openKey)return; var list=tops(openKey);
     ctx.innerHTML='<b>'+esc(LABEL[openKey]||openKey)+'</b>'+esc(textOf(cells[openKey].querySelector('.ed'))).slice(0,400);
-    thread.innerHTML=list.length?list.map(function(c){return '<div class="c'+(c.resolved?' resolved':'')+'" data-id="'+c.id+'"><div class="who"><span>'+esc(c.author||'Anonymous')+'</span><small>'+fmt(c.created_at)+'</small></div><div class="txt">'+esc(c.body)+'</div><div class="act"><button type="button" data-act="'+(c.resolved?'reopen':'resolve')+'">'+(c.resolved?'Reopen':'Resolve')+'</button></div></div>';}).join(''):'<div class="empty" style="color:var(--muted);font-size:13.5px">No comments on this cell yet.</div>';
+    thread.innerHTML=list.length?list.map(function(c){return cHtml(c,false);}).join(''):'<div class="empty" style="color:var(--muted);font-size:13.5px">No comments on this cell yet.</div>';
+    document.getElementById('replyline').hidden=!replyTo; if(replyTo){var p=comments.find(function(x){return x.id===replyTo;}); document.getElementById('replyto').textContent=p?('Replying to '+(p.author||'Anonymous')):'';}
     thread.scrollTop=thread.scrollHeight; }
-  function openPanel(key){ if(openKey&&cells[openKey])cells[openKey].classList.remove('target'); openKey=key; cells[key].classList.add('target'); panel.classList.add('open'); renderThread(); document.getElementById('ctext').focus(); }
-  function closePanel(){ if(openKey&&cells[openKey])cells[openKey].classList.remove('target'); openKey=null; panel.classList.remove('open'); }
+  function openPanel(key){ if(openKey&&cells[openKey])cells[openKey].classList.remove('target'); openKey=key; replyTo=null; cells[key].classList.add('target'); panel.classList.add('open'); renderThread(); document.getElementById('ctext').focus(); }
+  function closePanel(){ if(openKey&&cells[openKey])cells[openKey].classList.remove('target'); openKey=null; replyTo=null; panel.classList.remove('open'); }
   document.getElementById('pclose').addEventListener('click',closePanel);
+  document.getElementById('replycancel').addEventListener('click',function(){replyTo=null;renderThread();});
   document.querySelectorAll('.cm').forEach(function(b){b.addEventListener('click',function(){openPanel(b.closest('.cellwrap').getAttribute('data-cell'));});});
-  thread.addEventListener('click',function(ev){var b=ev.target.closest('button[data-act]'); if(!b)return; var id=b.closest('.c').getAttribute('data-id'); var res=b.getAttribute('data-act')==='resolve';
-    if(!live)return; api('script_comments?id=eq.'+id,{method:'PATCH',prefer:'return=minimal',body:{resolved:res}}).then(function(){var c=comments.find(function(x){return String(x.id)===id;}); if(c)c.resolved=res; renderBadges(); renderThread();}).catch(function(err){setStatus('Could not update comment: '+err.message.slice(0,60),'err');});});
+  thread.addEventListener('click',function(ev){var b=ev.target.closest('button[data-act]'); if(!b)return; var id=Number(b.closest('.c').getAttribute('data-id')); var act=b.getAttribute('data-act');
+    if(act==='reply'){replyTo=id; renderThread(); document.getElementById('ctext').focus(); return;}
+    if(!live||!isOwner)return;
+    rpc('set_comment_status',{p_id:id,p_status:act,p_by:name||'Owner',p_secret:secret}).then(function(){var c=comments.find(function(x){return x.id===id;}); if(c){c.status=act;c.status_by=act==='open'?null:(name||'Owner');c.status_at=act==='open'?null:new Date().toISOString();} renderBadges(); renderThread();})
+      .catch(function(err){setStatus('Could not update comment: '+err.message.slice(0,60),'err');});});
   var ctext=document.getElementById('ctext'), csend=document.getElementById('csend');
   csend.addEventListener('click',function(){ var body=ctext.value.trim(); if(!body||!openKey)return; if(!live){setStatus('Not connected: comments cannot be saved','err');return;}
-    needName(function(){ csend.disabled=true; var key=openKey;
-      api('script_comments',{method:'POST',prefer:'return=representation',body:{cell_key:key,author:name,body:body}}).then(function(rows){ comments.push(rows[0]); ctext.value=''; renderBadges(); renderThread(); })
+    needName(function(){ csend.disabled=true; var key=openKey; var payload={cell_key:key,author:name,body:body}; if(replyTo)payload.parent_id=replyTo;
+      api('script_comments',{method:'POST',prefer:'return=representation',body:payload}).then(function(rows){ comments.push(rows[0]); ctext.value=''; replyTo=null; renderBadges(); renderThread(); })
       .catch(function(err){setStatus('Could not post: '+err.message.slice(0,80),'err');}).then(function(){csend.disabled=false;}); }); });
   ctext.addEventListener('keydown',function(ev){if((ev.metaKey||ev.ctrlKey)&&ev.key==='Enter')csend.click();});
-  function loadComments(){ if(!live)return Promise.resolve(); return api('script_comments?select=id,cell_key,author,body,created_at,resolved&order=created_at.asc').then(function(rows){comments=rows; renderBadges(); if(openKey)renderThread();}); }
-  function renderAll(){ var el=document.getElementById('alllist'); var open=comments.filter(function(c){return !c.resolved;});
-    document.getElementById('allcount').textContent=open.length+' open · '+(comments.length-open.length)+' resolved';
-    el.innerHTML=open.length?open.slice().reverse().map(function(c){return '<div class="item"><div><div class="k">'+esc(c.author||'Anonymous')+'</div><div class="k">'+fmt(c.created_at)+'</div></div><div>'+esc(c.body)+'</div><a href="#" data-go="'+esc(c.cell_key)+'">'+esc(LABEL[c.cell_key]||c.cell_key)+' →</a></div>';}).join(''):'<div class="empty">No open comments.</div>'; }
+  function loadComments(){ if(!live)return Promise.resolve(); return api('script_comments?select=id,cell_key,author,body,created_at,status,status_by,status_at,parent_id&order=created_at.asc').then(function(rows){comments=rows; renderBadges(); if(openKey)renderThread();}); }
+  var allFilter='open';
+  function renderAll(){ var el=document.getElementById('alllist'); var all=comments.filter(function(c){return !c.parent_id;});
+    var n={open:0,approved:0,done:0}; all.forEach(function(c){n[c.status||'open']=(n[c.status||'open']||0)+1;});
+    document.getElementById('allcount').textContent=n.open+' open · '+n.approved+' approved · '+n.done+' done';
+    document.querySelectorAll('#allfilter button').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===allFilter?'true':'false');});
+    var list=all.filter(function(c){return allFilter==='all'||(c.status||'open')===allFilter;});
+    el.innerHTML=list.length?list.slice().reverse().map(function(c){var rc=replies(c.id).length; return '<div class="item"><div><div class="k">'+esc(c.author||'Anonymous')+'</div><div class="k">'+fmt(c.created_at)+'</div><div>'+pill(c)+'</div></div><div>'+esc(c.body)+(rc?'<div class="k" style="margin-top:4px">'+rc+(rc===1?' reply':' replies')+'</div>':'')+'</div><a href="#" data-go="'+esc(c.cell_key)+'">'+esc(LABEL[c.cell_key]||c.cell_key)+' →</a></div>';}).join(''):'<div class="empty">Nothing here.</div>'; }
+  document.getElementById('allfilter').addEventListener('click',function(ev){var b=ev.target.closest('button[data-f]'); if(!b)return; allFilter=b.getAttribute('data-f'); renderAll();});
   document.getElementById('alllist').addEventListener('click',function(ev){var a=ev.target.closest('a[data-go]'); if(!a)return; ev.preventDefault(); var k=a.getAttribute('data-go'); if(cells[k]){cells[k].scrollIntoView({block:'center'}); openPanel(k);} });
   // ---- boot ----
+  setOwner(false);
   if(!live){ setStatus('Not connected to a database yet: read-only',"err"); return; }
   setStatus('Connecting…');
-  Promise.all([loadEdits(),loadComments()]).then(function(){setStatus('Live: edits and comments save for everyone','on');})
+  Promise.all([loadEdits(),loadComments()]).then(function(){setStatus('Live: comments and edits sync for everyone','on'); if(secret){verifyOwner(secret,function(ok){ if(ok)setOwner(true); else {secret='';try{localStorage.removeItem(SKEY);}catch(e){}} });}})
     .catch(function(err){setStatus('Could not reach the database: '+err.message.slice(0,60),'err');});
   setInterval(function(){ if(document.hidden)return; loadEdits().catch(function(){}); loadComments().catch(function(){}); },8000);
 })();

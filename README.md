@@ -15,6 +15,7 @@ Decisions save in your browser between visits and travel to others only through 
 ## Files
 
 - `index.html`: the video watchlist.
+- `scripts.html`: Brent's approved ads rewritten beat by beat for the AI Video Editor and the AI Thumbnail Generator, with shooting notes.
 - `statics.html`: the static (image and carousel) watchlist, with a "Statics to test" set ranked the same way. Pulled 2026-09-17.
 - `data/statics_index.csv` and `.json`: every static ad with brand, rank, days running, format, CTA, headline, primary text, card text, landing URL, image URLs and Foreplay link.
 - `data/ads_index.csv` and `.json`: every ad with brand, rank, days running, format, CTA, hook, headline, primary text, transcript, landing URL, placements and Foreplay link.

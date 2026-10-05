@@ -1,0 +1,224 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>1of10 Editor Brief</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"><style>
+:root{--bg:#E9E7E1;--surface:#F7F6F2;--ink:#111111;--muted:#5A5852;--line:#111111;--line2:#C9C6BD;--link:#111111;--ok:#1F5E3A;--ok-bg:#DCEBDF;--no:#A8321F;--no-bg:#F1D9D3;--rail:#DEDBD3;--tag:#111111;--tag-ink:#F7F6F2}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161614;--surface:#1F1F1C;--ink:#ECEAE3;--muted:#A19E95;--line:#ECEAE3;--line2:#3A3934;--link:#ECEAE3;--ok:#7FCB9A;--ok-bg:#1B3524;--no:#F0907C;--no-bg:#3E1E17;--rail:#111110;--tag:#ECEAE3;--tag-ink:#161614}}
+:root[data-theme="dark"]{--bg:#161614;--surface:#1F1F1C;--ink:#ECEAE3;--muted:#A19E95;--line:#ECEAE3;--line2:#3A3934;--link:#ECEAE3;--ok:#7FCB9A;--ok-bg:#1B3524;--no:#F0907C;--no-bg:#3E1E17;--rail:#111110;--tag:#ECEAE3;--tag-ink:#161614}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Geist,"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:1.45;padding-inline:16px;padding-block:0 80px}
+h1,h2,h3{font-family:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(30px,5vw,52px);font-weight:800;line-height:1}
+h2{font-size:clamp(20px,2.6vw,26px);font-weight:700}
+a{color:var(--link)}
+.top{max-width:1240px;margin:0 auto;padding-block:28px 14px;display:flex;flex-wrap:wrap;gap:12px 40px;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--line)}
+.eyebrow{font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);margin-bottom:8px}
+.lede{max-width:56ch;color:var(--muted);margin:0;font-size:14px}
+nav.brands{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding:0 16px}
+.navin{max-width:1240px;margin:0 auto;display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+nav.brands a{white-space:nowrap;text-decoration:none;color:var(--ink);font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:13px;padding:12px 14px 10px;border-bottom:3px solid transparent;margin-bottom:-1px}
+nav.brands a.k{border-bottom-color:var(--ink)}
+nav.brands a.sw{margin-left:auto;color:var(--muted)}
+nav.brands a.sw2{color:var(--muted)}
+nav.brands .grp{white-space:nowrap;font-family:"Geist Mono",monospace;font-size:10px;color:var(--muted);align-self:center;padding:0 10px 0 18px;border-left:1px solid var(--line2);text-transform:uppercase;letter-spacing:.06em}
+.grouph{max-width:1240px;margin:56px auto -24px;font-family:"Geist Mono",monospace;font-size:12px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.brandtag .pg{font-family:"Geist Mono",monospace;font-weight:400;font-size:10px;opacity:.8}
+.rbar{max-width:1240px;margin:14px auto 0;border:1px solid var(--line);background:var(--surface);padding:10px 12px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.rbar label{font-family:"Geist Mono",monospace;font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.rbar input{font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);min-width:170px;border-radius:0}
+.counts{display:flex;gap:0;font-family:"Geist Mono",monospace;font-size:12px;border:1px solid var(--line)}
+.counts button{font:inherit;font-size:12px;padding:6px 10px;border:0;border-right:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.counts button:last-child{border-right:0}
+.counts button[aria-pressed="true"]{background:var(--tag);color:var(--tag-ink)}
+.rbar .act{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.rbar .act button{font:inherit;font-size:13px;font-family:"Schibsted Grotesk",sans-serif;font-weight:700;padding:7px 12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;border-radius:0}
+.rbar .act button.primary{background:var(--tag);color:var(--tag-ink)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.brand{max-width:1240px;margin:40px auto 0}
+.bh{display:flex;flex-wrap:wrap;gap:10px 32px;align-items:flex-end;justify-content:space-between;padding-bottom:8px;border-bottom:2px solid var(--line);margin-bottom:12px}
+.blurb{color:var(--muted);max-width:60ch;margin:2px 0 0;font-size:14px}
+.stats{display:flex;gap:18px;margin:0}
+.stats div{display:flex;flex-direction:column}
+.stats dt{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted)}
+.stats dd{margin:0;font-family:"Schibsted Grotesk",sans-serif;font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+.rail{display:flex;gap:10px;overflow-x:auto;padding:0 0 14px;scroll-snap-type:x proximity}
+.card{flex:0 0 268px;scroll-snap-align:start;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column}
+.media{background:#000;aspect-ratio:9/16;width:100%;position:relative;border-bottom:1px solid var(--line)}
+.media video,.media img{width:100%;height:100%;object-fit:contain;display:block;background:#000}
+.media .alts{position:absolute;bottom:6px;left:6px;display:flex;gap:4px}
+.media .alts a{font-size:11px;background:#000;color:#fff;padding:2px 6px;text-decoration:none;border:1px solid #fff}
+.nomedia{color:#aaa;font-size:13px;display:grid;place-items:center;height:100%}
+.meta{padding:10px 10px 10px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.row0{display:flex;justify-content:space-between;align-items:flex-end;gap:8px;border-bottom:2px solid var(--line);padding-bottom:6px}
+.brandtag{font-family:"Schibsted Grotesk",sans-serif;font-weight:800;font-size:15px;letter-spacing:-.01em;background:var(--tag);color:var(--tag-ink);padding:3px 8px;line-height:1.2}
+.daysbig{font-family:"Schibsted Grotesk",sans-serif;font-weight:800;font-size:24px;line-height:1;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:5px}
+.daysbig small{font-family:"Geist Mono",monospace;font-size:10px;font-weight:400;color:var(--muted)}
+.row1{display:flex;gap:8px;align-items:baseline;font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted)}
+.rank{color:var(--ink);font-weight:500}
+.days{color:var(--ink);font-weight:500}
+.hook{margin:0;font-weight:600;line-height:1.3;font-family:"Schibsted Grotesk",sans-serif;font-size:15px}
+.hl{margin:0;color:var(--muted);font-size:13px}
+details{border-top:1px solid var(--line2);padding-top:6px}
+summary{cursor:pointer;font-family:"Geist Mono",monospace;font-size:11px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.tr{margin:6px 0 0;font-size:13px;color:var(--ink);white-space:pre-wrap;max-height:220px;overflow:auto}
+.links{display:flex;justify-content:space-between;gap:8px;margin-top:auto;padding-top:6px;font-size:13px;border-top:1px solid var(--line2)}
+.links a{color:var(--link);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.since{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted)}
+a:focus-visible,summary:focus-visible,video:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media (max-width:480px){.card{flex-basis:82vw}}
+.review{border-top:1px solid var(--line2);padding-top:8px;display:flex;flex-direction:column;gap:6px}
+.btns{display:flex;gap:0;border:1px solid var(--line)}
+.btns button{font:inherit;font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:13px;padding:7px 0;flex:1;border:0;border-right:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.btns button:last-child{border-right:0}
+.btns .clr{flex:0 0 34px}
+.btns .ok[aria-pressed="true"]{background:var(--ok);color:#fff}
+.btns .no[aria-pressed="true"]{background:var(--no);color:#fff}
+.note{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);resize:vertical;width:100%;border-radius:0}
+.card[data-state="a"]{outline:2px solid var(--ok);outline-offset:-1px}
+.card[data-state="d"]{outline:2px solid var(--no);outline-offset:-1px;opacity:.8}
+.card.hide{display:none}
+.rail:has(> .card:not(.hide)) .empty{display:none}
+.empty{padding:24px;color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:10px}
+.grid .card{flex:none;width:100%}
+.why{font-size:13px;color:var(--ink);line-height:1.35;background:var(--ok-bg);margin:-10px -10px 2px;padding:8px 10px;border-bottom:1px solid var(--line2)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;font-size:14px;min-width:980px;width:100%}
+th,td{text-align:left;vertical-align:top;padding:9px 11px;border-bottom:1px solid var(--line2);border-right:1px solid var(--line2)}
+th:last-child,td:last-child{border-right:0}
+tr:last-child td{border-bottom:0}
+th{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted);font-weight:500;background:var(--bg)}
+td:first-child{font-family:"Geist Mono",monospace;color:var(--muted)}
+
+.doc{max-width:900px;margin:0 auto;padding-block:24px 80px;font-size:15.5px;line-height:1.55}
+.doc h1{font-size:clamp(28px,4vw,40px);margin:0 0 6px}
+.doc h2{margin:36px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+.doc h3{margin:24px 0 8px;font-size:17px}
+.doc p{margin:0 0 12px;max-width:75ch}
+.doc ul,.doc ol{padding-left:22px;margin:0 0 12px}
+.doc li{margin:4px 0;max-width:75ch}
+.doc code{font-family:"Geist Mono",monospace;font-size:13px;background:var(--surface);border:1px solid var(--line2);padding:1px 5px}
+.doc table{min-width:0;width:100%;margin:0 0 14px;border:1px solid var(--line);background:var(--surface)}
+.doc a{color:var(--ink)}
+</style></head><body><nav class="brands"><div class="navin"><a href="index.html">Video watchlist</a><a href="statics.html">Static watchlist</a><a href="scripts.html">Script rewrites</a><a href="editor-brief.html" class="k">Editor brief</a></div></nav><div class="doc"><h1>1of10 ad edit: brief for the video editor</h1>
+<p>Prepared 2026-10-04. Footage folder: <code>1of10</code> (shot 2026-10-02 and 2026-10-03). Everything below is in that folder, sorted into one subfolder per script.</p>
+<h2>The two links you need</h2>
+<ul>
+<li>Reference ads (the competitor ads we are modeling, watch them first): https://1stdata.github.io/1of10-ad-watchlist/</li>
+<li>Scripts, beat by beat, with shooting notes: https://1stdata.github.io/1of10-ad-watchlist/scripts.html</li>
+</ul>
+<p>On the scripts page every ad has a table: the original competitor line, our rewrite for the <strong>AI Video Editor (VE)</strong>, our rewrite for the <strong>AI Thumbnail Generator (TG)</strong>, and a "How to shoot it" column that doubles as your edit notes (on-screen text, when to cut to screen recording, what the end card says). Hover a cell and press Comment if a line is unclear or a take does not match; Artur gets notified and can approve or answer there.</p>
+<h2>What we are making</h2>
+<p>Eight finished vertical ads (9:16, 1080x1920, 30 fps, captions burned in), two products x four scripts:</p>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Modeled on</th>
+<th>Product cuts</th>
+<th>Footage status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1 "Too lazy"</td>
+<td>OpusClip, 362 days live</td>
+<td>VE + TG</td>
+<td>Shot: hook takes and full body</td>
+</tr>
+<tr>
+<td>S2 "Ever wonder"</td>
+<td>OpusClip, 438 days live</td>
+<td>VE + TG</td>
+<td>Shot: full</td>
+</tr>
+<tr>
+<td>S5 Street interview</td>
+<td>OpusClip, 186 days live</td>
+<td>VE + TG</td>
+<td>Partially shot: only the interviewee's answers (Part 2). Interviewer side and phone demo are not in the folder.</td>
+</tr>
+<tr>
+<td>S6 "Hey you"</td>
+<td>Native Instruments, 360 days live</td>
+<td>VE + TG</td>
+<td>Shot: hook (walking) and full body (locked-off)</td>
+</tr>
+</tbody>
+</table>
+<p>Two approved scripts were not shot (S3 "How did you edit before", S4 "3.5 million views" testimonial). Ignore them for now.</p>
+<p>Export naming: <code>1of10_S1_VE_v1.mp4</code>, <code>1of10_S1_TG_v1.mp4</code>, and so on.</p>
+<h2>Footage map</h2>
+<p>Talent is the same person in every clip. Studio clips: dark room, black backdrop, lav mic, framed loose so you can punch in. Timecodes below are approximate (from an auto transcript, within about 10 seconds); scrub around them.</p>
+<h3>01 Too lazy (OpusClip 362d)</h3>
+<ul>
+<li><code>S1_VE_hook_take1_[101631].MOV</code> (0:45): "If you're too lazy to edit your own videos for your YouTube channel, it's fine actually." Starts with "Testing 1, 2", skip it. Two usable deliveries, the second (around 0:25) is cleaner.</li>
+<li><code>S1_VE_hook_take2_[101758].MOV</code> (0:30): two more deliveries of the same hook.</li>
+<li><code>S1_VE_hook_take3_[101912].MOV</code> (0:57): starts with "Testing, one, two", then three to four deliveries, including a standalone "It's fine, actually" pickup. Best energy of the three; start here.</li>
+<li><code>S1_hook_OUTTAKE_says-podcast_[101841].MOV</code> (0:28): talent reads the competitor's original line ("edit clips for your own podcast"). Do not use.</li>
+<li><code>S1_TG_hook_[102206].MOV</code> (0:47): "If you're too lazy to edit thumbnails for your own YouTube channel, it's fine actually." Four deliveries. Note he says "edit thumbnails" not "make thumbnails"; fine.</li>
+<li><code>S1_VE+TG_body_all-beats_[103526].MOV</code> (13:20): every remaining beat for both products, in script order, many takes each. Rough index:</li>
+<li>0:00 to 2:05 VE stakes: "In 2026 you have to post every week, that's non-negotiable... editing a talking head video is either time consuming or really expensive." Multiple takes; the ones near 1:15 to 1:45 are clean.</li>
+<li>2:05 to 3:00 VE turn: "But now we have 1of10's video AutoCut and editor. It solves both of those problems." (He says "AutoCut and editor", not "video editor". Keep as spoken.)</li>
+<li>3:20 to 5:20 VE demo: "1of10's AutoCut is an AI that takes your raw footage, takes out the silences, the bad takes and the dead air, to give you an amazing color-graded video with no prompting." Lots of restarts; the complete sentence is near 5:00.</li>
+<li>5:25 to 6:10 VE proof: "Look, this 12-minute video, raw footage to finished cut in under 5 minutes. That would normally be a night of editing or hundreds of dollars." (He also says "thousands" once; use "hundreds".)</li>
+<li>6:10 to 7:05 VE offer and close: "Right now 1of10 AutoCut is free to try while it's in early access. If you're making talking head videos you're losing hours every week by not using it."</li>
+<li>7:05 to 7:50 hook tails: "This does it in one click" (VE) and "This makes them in 90 seconds" (TG). These are the second sentence of each hook; splice after the hook take.</li>
+<li>7:55 to 8:20 a slip ("In 2027"), skip.</li>
+<li>8:20 to 9:30 TG stakes: "In 2026 the thumbnail decides if anyone will click. That's non-negotiable. But a good thumbnail is either time consuming or expensive."</li>
+<li>9:35 to 10:25 TG turn: "But now there's 1of10's thumbnail generator and it solves both of those problems."</li>
+<li>10:25 to 10:50 TG demo: "The thumbnail generator is an AI that understands what goes viral, your channel style, and helps you create thumbnails fast."</li>
+<li>10:50 to 11:40 TG proof: "Look, this is six proven thumbnails for one video in under 2 minutes. That would normally be an afternoon in Photoshop or hundreds of dollars."</li>
+<li>11:40 to 12:05 TG offer, three versions back to back: "$1 for 7 days", "$7 for 7 days", "$29 for 7 days". See the open question below.</li>
+<li>12:05 to 12:55 TG close: "If you're posting videos without testing thumbnails, you're leaving views on the table."</li>
+<li>12:55 to 13:20 alternate TG offer: "And you can try it free for seven days."</li>
+</ul>
+<h3>02 Ever wonder (OpusClip 438d)</h3>
+<ul>
+<li><code>S2_VE+TG_full_[105150].MOV</code> (5:25), both products, in order:</li>
+<li>0:00 to 1:30 VE hook, many takes: "Ever wonder how YouTubers post so often? They're using 1of10." Clean run around 1:15.</li>
+<li>1:15 to 2:30 VE body in one run: "You just give it your raw video and in a few minutes you have a finished cut. Silences gone, the best retakes chosen, and completed with a professional color grade. It shows you every retake side by side so you can pick the best take and it picks the cut for you. You can even pick animations for each section, giving you complete control. Download the finished video or keep editing it yourself. It's free to try right now because it's currently in early access. Sign up today."</li>
+<li>2:30 to 3:00 TG hook: "Ever wonder how YouTube channels get millions of views? They're using 1of10."</li>
+<li>3:00 to 5:00 TG body: "You give it a title, type it, or paste a reference thumbnail and click generate. In about 90 seconds you have six thumbnails in your channel style, ready to go. It's trained on millions of high-performing thumbnails, so what it gives you is what already gets clicked, not a template. You can edit the text, the background, the layout with AI, swap faces, then download it or send it straight to YouTube. It's free to try right now because it's currently in early access. Sign up today."</li>
+<li>5:00 to 5:10 button: "That's a lot of thumbnails." Optional tag after the close.</li>
+</ul>
+<h3>05 Street interview (OpusClip 186d)</h3>
+<p>Outdoor, handheld, talent in plaid shirt playing the creator being interviewed, holding a tablet. Only the subject's side exists.</p>
+<ul>
+<li><code>S5_P2_interviewee-answers_take1_[P2_1].MOV</code> (3:05): "Thanks man. I make YouTube videos, coaching stuff." / "Yeah man, every night." / "It takes about four hours" (also "four to six hours") / "What's that?" / "What's it called?" / TG version: "About an hour or two if I hate it."</li>
+<li><code>S5_P2_interviewee-answers_take2_[P2_2].MOV</code> (1:10): shorter repeat of the same answers.</li>
+</ul>
+<p>To finish this one we still need: the interviewer's questions ("Hey, looking good. What do you do for a living?", "And you edit all that yourself?", "How long does one take?", "Try this." "Let me show you."), the phone-demo lines, and a reaction. Assemble what exists as a rough cut with placeholder text cards for the missing lines so Artur can see the gaps, or hold until Part 1 is shot. Artur decides.</p>
+<h3>06 Hey you (Native Instruments 360d)</h3>
+<ul>
+<li><code>S6_hook_test_[110457].MOV</code> (0:34): "Hey you. Hey you." Camera test, probably skip.</li>
+<li><code>S6_VE+TG_hook_come-follow-me_[110948].MOV</code> (4:35): the walking hook. Talent at a podcast mic, points at lens, "Hey you, you!", then "Come follow me" and walks the camera to the desk. Index:</li>
+<li>0:00 to 1:15 "Hey you" deliveries only.</li>
+<li>1:15 to 2:55 VE hook: "Hey you, you. You want to hear the best kept secret in YouTube video production? Come follow me." Several full runs; the ones around 2:05 to 2:30 are complete.</li>
+<li>2:55 to 3:40 TG hook: "...best kept secret in YouTube thumbnail generation?" and "...best kept secret in going viral on YouTube? Come follow me." Use the "going viral" version unless Artur says otherwise.</li>
+<li>3:40 to 4:35 extra "Come follow me" walks for coverage.</li>
+<li>Sound reference for the hook is in the same folder (<code>S6_SOUND-REF_Hey-You-Audio.m4a</code>, plus the longer official-audio file). Use it as the cue for the "Hey you" moment (a short stab under the point at the lens), not as a music bed. Clear the rights before publishing if it is a commercial track.</li>
+<li><code>S6_VE+TG_body_locked-off_[1of10_1].mp4</code> (12:24): locked-off wide at the desk, wider framing than the other studio clips, so punch in to match. Index:</li>
+<li>0:00 to 1:00 VE beat 2: "You don't have to hire mega expensive video editors to produce professional YouTube videos" and the tighter "You don't have to pay an editor or learn Premiere to get a video that looks professional" (near 1:00; prefer this one, it matches the script).</li>
+<li>1:15 to 2:20 VE beat 3: "With 1of10's video editor you get AutoCut, Auto Retakes, Auto Animations, a real professional color grade, Auto Sync and Audio Enhance. And right now it's free to try." Several runs, one with a slip ("free to track"), one with a static burst near 1:55.</li>
+<li>2:30 to 5:20 VE beat 4: "From the raw upload to the finished, graded, animated cut, everything is in one place. Plus you keep control and you can keep editing afterwards." Many restarts; complete runs near 3:45 and 5:00.</li>
+<li>5:25 to 6:40 VE close: "The best part? No card, no commitment. Try it for free today." Several runs.</li>
+<li>6:40 to 9:00 TG beat 2: "You don't have to hire a designer or learn Photoshop to get a viral YouTube thumbnail" (around 7:30 to 7:55; earlier takes say "expensive graphic designer", also usable).</li>
+<li>9:10 to 10:30 TG beat 3: "With 1of10 you get a thumbnail generator trained on millions of thumbnails that already got clicked." Clean around 10:00 to 10:25.</li>
+<li>10:50 to 11:10 TG beat 4: "From the title to the thumbnail to the AI edit, everything is in one place. Plus it gets better the more you upload because it learns your style."</li>
+<li>11:15 to 12:24 TG close, three price versions back to back: "$1 for 7 days", "$7 for 7 days", "$29 for 7 days", each with "Try it at 1of10.com". See the open question below.</li>
+</ul>
+<h2>Edit instructions</h2>
+<p>Structure. Follow the beat table on the scripts page for each ad: the on-camera line, then the screen recording it calls for, then back to camera for the close. Target lengths: S1 about 50 s, S2 about 45 s, S5 about 40 s, S6 about 50 s. Hook on screen within the first second; no logo, no intro.</p>
+<p>Captions. Burn in word-by-word captions, large, centered low third, white with a dark stroke. Keyword in each beat in the accent color (the number, the product name, "free").</p>
+<p>Screen recordings (not in the folder, you record these inside the product). Each VE ad needs: the raw upload, AutoCut shrinking the timeline, Auto Retakes side by side, the color grade before/after, and the finished export. Each TG ad needs: connecting a channel, typing a title, the grid of six thumbnails appearing, one AI edit of text or background, and the download or send-to-YouTube step. For the S1 proof beats also capture the clock: a 12-minute video finishing in under 5 minutes, and six thumbnails in under 2 minutes, so the numbers on screen are true.</p>
+<p>Numbers on screen. S1 VE proof: "12 min video, 5 min edit". S1 TG proof: "6 thumbnails, 2 minutes". S1 stakes beat: split frame, left "Time" with a clock, right "Money" with a price. S6 beat 2: cross out the expensive option (an editor invoice, a Photoshop icon).</p>
+<p>End cards. Two seconds, URL 1of10.com, CTA text per the open question below.</p>
+<p>The S6 hook. Keep the walk continuous from the point at the lens through "Come follow me" to sitting at the desk, then cut to the locked-off body footage. Sound stab on "Hey you", quick "shh" or whisper SFX before the reveal line. Normal voice returns on the last line.</p>
+<p>Audio. Lav audio is on the clips. Remove room tone between takes, light de-noise, then a music bed under everything at about -22 dB that drops out for the hook and the close.</p>
+<p>Deliver v1 of S1 VE first. Artur reviews it against the beat table, then you run the rest the same way.</p>
+<h2>Open questions for Artur (answer before the editor locks picture)</h2>
+<ol>
+<li>Offer line. The footage has four versions: "free while in early access" (VE), "free for seven days", "$1 for 7 days", "$7 for 7 days", "$29 for 7 days" (TG). The scripts say VE is free via waitlist and TG is "try it free, no card". Pick one per product so the editor can choose takes and build the end card.</li>
+<li>Product name. Talent says "1of10's AutoCut" and "AutoCut and editor" in S1; the scripts say "1of10's video editor". Keep as spoken, or re-record the turn line?</li>
+<li>S5 street interview. Shoot Part 1 (interviewer side and phone demo), or have the editor rough-cut the answers with placeholders?</li>
+<li>S6 sound reference. Is the "Hey You" track licensed for ads, or should the editor use a stock stab?</li>
+</ol></div></body></html>

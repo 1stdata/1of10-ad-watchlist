@@ -1,0 +1,818 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>1of10 Static Remakes: review</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#E9E7E1;--surface:#F7F6F2;--ink:#111111;--muted:#5A5852;--line:#111111;--line2:#C9C6BD;--link:#111111;--ok:#1F5E3A;--ok-bg:#DCEBDF;--no:#A8321F;--no-bg:#F1D9D3;--tag:#111111;--tag-ink:#F7F6F2;--blue:#2260F3}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161614;--surface:#1F1F1C;--ink:#ECEAE3;--muted:#A19E95;--line:#ECEAE3;--line2:#3A3934;--link:#ECEAE3;--ok:#7FCB9A;--ok-bg:#1B3524;--no:#F0907C;--no-bg:#3E1E17;--tag:#ECEAE3;--tag-ink:#161614;--blue:#6B95FF}}
+:root[data-theme="dark"]{--bg:#161614;--surface:#1F1F1C;--ink:#ECEAE3;--muted:#A19E95;--line:#ECEAE3;--line2:#3A3934;--link:#ECEAE3;--ok:#7FCB9A;--ok-bg:#1B3524;--no:#F0907C;--no-bg:#3E1E17;--tag:#ECEAE3;--tag-ink:#161614;--blue:#6B95FF}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Geist,"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:1.45;padding-inline:16px;padding-block:0 80px}
+h1,h2,h3{font-family:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(30px,5vw,52px);font-weight:800;line-height:1}
+h2{font-size:clamp(18px,2.2vw,24px);font-weight:700}
+a{color:var(--link)}
+.top{max-width:1240px;margin:0 auto;padding-block:28px 14px;display:flex;flex-wrap:wrap;gap:12px 40px;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--line)}
+.eyebrow{font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);margin-bottom:8px}
+.lede{max-width:60ch;color:var(--muted);margin:0;font-size:14px}
+nav.brands{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding:0 16px}
+.navin{max-width:1240px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
+nav.brands a{white-space:nowrap;text-decoration:none;color:var(--ink);font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:13px;padding:12px 14px 10px;border-bottom:3px solid transparent;margin-bottom:-1px}
+nav.brands a.k{border-bottom-color:var(--ink)}
+nav.brands a.sw{margin-left:auto;color:var(--muted)}
+.bar{max-width:1240px;margin:14px auto 0;border:1px solid var(--line);background:var(--surface);padding:10px 12px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;font-size:13px}
+.bar label{font-family:"Geist Mono",monospace;font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.bar input{font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);min-width:170px;border-radius:0}
+.bar .st{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted);margin-left:auto}
+.bar .st.on{color:var(--ok)}.bar .st.err{color:var(--no)}
+.bar button{font:inherit;font-size:13px;font-family:"Schibsted Grotesk",sans-serif;font-weight:700;padding:7px 12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;border-radius:0}
+.stats{max-width:1240px;margin:18px auto 0;display:flex;flex-wrap:wrap;gap:10px 28px}
+.stats div{display:flex;flex-direction:column}
+.stats b{font-family:"Schibsted Grotesk",sans-serif;font-weight:800;font-size:26px;line-height:1.1;font-variant-numeric:tabular-nums}
+.stats span{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted)}
+.ctl{max-width:1240px;margin:16px auto 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.counts{display:flex;font-family:"Geist Mono",monospace;font-size:12px;border:1px solid var(--line)}
+.counts button{font:inherit;font-size:12px;padding:6px 10px;border:0;border-right:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.counts button:last-child{border-right:0}
+.counts button[aria-pressed="true"]{background:var(--tag);color:var(--tag-ink)}
+.ctl input{font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);min-width:200px;border-radius:0}
+.ctl .n{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted);margin-left:auto}
+.leg{display:flex;gap:16px;font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted);flex-wrap:wrap}
+.leg span::before{content:"";display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px;border:1px solid var(--line2)}
+.leg .l1::before{background:var(--bg)}.leg .l2::before{background:var(--blue);border-color:var(--blue)}
+.intro{max-width:1240px;margin:18px auto 0;font-size:14px;color:var(--muted)}
+.intro p{max-width:80ch;margin:0}
+.pair{max-width:1240px;margin:34px auto 0;border:1px solid var(--line);background:var(--surface)}
+.pair.hide{display:none}
+.ph{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line)}
+.rank{font-family:"Schibsted Grotesk",sans-serif;font-weight:800;font-size:26px;line-height:1;font-variant-numeric:tabular-nums;min-width:44px}
+.brandtag{font-family:"Schibsted Grotesk",sans-serif;font-weight:800;font-size:15px;background:var(--tag);color:var(--tag-ink);padding:3px 8px;line-height:1.2}
+.days{font-family:"Schibsted Grotesk",sans-serif;font-weight:800;font-size:20px;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:5px}
+.days small{font-family:"Geist Mono",monospace;font-size:10px;font-weight:400;color:var(--muted)}
+.fmt{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted)}
+.ph .links{margin-left:auto;display:flex;gap:12px;font-size:13px;align-items:center}
+.ph .links a{text-decoration:underline;text-underline-offset:3px}
+.life{height:4px;background:var(--line2);position:relative}
+.life i{display:block;height:100%;background:var(--ink)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.col{padding:14px;display:flex;flex-direction:column;gap:10px}
+.col.o{background:var(--bg);border-right:1px solid var(--line)}
+.col.u{border-left:3px solid var(--blue)}
+.lbl{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.col.u .lbl{color:var(--blue)}
+.im{display:block;background:#000;border:1px solid var(--line);aspect-ratio:4/5;max-height:560px;position:relative}
+.im img{width:100%;height:100%;object-fit:contain;display:block;background:#000}
+.im .zoom{position:absolute;bottom:6px;right:6px;font-size:11px;background:#000;color:#fff;padding:2px 6px;border:1px solid #fff}
+.im.pending::after{content:"Not shot yet";position:absolute;inset:0;display:grid;place-items:center;color:#aaa;font-family:"Geist Mono",monospace;font-size:12px}
+.cap{font-size:14px;display:flex;flex-direction:column;gap:5px}
+.cap .h{font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:15px;line-height:1.3}
+.cap .b{color:var(--muted);font-size:13px}
+.cap .k{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted)}
+.cap .pat{background:var(--ok-bg);padding:6px 10px;font-size:13px;border:1px solid var(--line2)}
+.cap .pat b{font-weight:600}
+.cap .angle{font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:15px;line-height:1.3}
+.cap .prod{display:inline-block;font-family:"Geist Mono",monospace;font-size:10px;background:var(--blue);color:#fff;padding:2px 6px;letter-spacing:.06em;text-transform:uppercase;align-self:flex-start}
+.cellwrap{position:relative}
+.tools{display:flex;gap:4px}
+.tools button{font:inherit;font-family:"Geist Mono",monospace;font-size:10px;padding:3px 8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;line-height:1.4}
+.tools button:hover{background:var(--tag);color:var(--tag-ink)}
+.tools .cm.has{background:var(--tag);color:var(--tag-ink)}
+.tools .cm.has.open{background:var(--ok);border-color:var(--ok);color:#fff}
+.tools .cm.appr{background:var(--ok-bg);color:var(--ok);border-color:var(--ok)}
+.pair.target{box-shadow:0 0 0 2px var(--ok)}
+@media (max-width:820px){.cols{grid-template-columns:1fr}.col.o{border-right:0;border-bottom:1px solid var(--line)}.ph .links{margin-left:0}}
+/* comment panel */
+.panel{position:fixed;top:0;right:0;bottom:0;width:min(380px,100vw);background:var(--surface);border-left:1px solid var(--line);z-index:30;display:flex;flex-direction:column;transform:translateX(105%);transition:transform .2s}
+.panel.open{transform:none}
+.panel header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:2px solid var(--line)}
+.panel header h3{font-size:15px;margin:0}
+.panel header button{font:inherit;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:3px 8px;cursor:pointer}
+.panel .ctx{padding:10px 14px;font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--line2);max-height:120px;overflow:auto;background:var(--bg)}
+.panel .ctx b{color:var(--ink);font-family:"Geist Mono",monospace;font-size:11px;display:block;margin-bottom:4px}
+.thread{flex:1;overflow:auto;padding:10px 14px;display:flex;flex-direction:column;gap:10px}
+.c{border:1px solid var(--line2);padding:8px 10px;background:var(--bg)}
+.c .who{font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:13px;display:flex;justify-content:space-between;gap:8px}
+.c .who small{font-family:"Geist Mono",monospace;font-weight:400;font-size:10px;color:var(--muted)}
+.c .txt{font-size:13.5px;white-space:pre-wrap;margin-top:4px}
+.c.resolved{opacity:.55}
+.c .act{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+.c .act button{font:inherit;font-family:"Geist Mono",monospace;font-size:10px;padding:2px 6px;border:1px solid var(--line2);background:var(--surface);color:var(--ink);cursor:pointer}
+.c.reply{margin:8px 0 0 14px;border-left:3px solid var(--line2);background:var(--surface)}
+.compose{padding:10px 14px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.compose textarea{font:inherit;font-size:13.5px;padding:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);resize:vertical;min-height:70px;border-radius:0}
+.compose .row{display:flex;justify-content:space-between;align-items:center;gap:8px;font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted)}
+.compose button{font:inherit;font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:13px;padding:7px 12px;border:1px solid var(--line);background:var(--tag);color:var(--tag-ink);cursor:pointer}
+.compose button:disabled{opacity:.5;cursor:default}
+.compose .row[hidden]{display:none}
+.compose .lnk{background:transparent;color:var(--ink);border:0;padding:0;font-family:"Geist Mono",monospace;font-size:11px;text-decoration:underline;cursor:pointer}
+.namegate{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40;display:none;align-items:center;justify-content:center;padding:16px}
+.namegate.show{display:flex}
+.namegate .box{background:var(--surface);border:1px solid var(--line);padding:20px;max-width:380px;width:100%;display:flex;flex-direction:column;gap:10px}
+.namegate h3{margin:0;font-size:18px}
+.namegate p{margin:0;font-size:13.5px;color:var(--muted)}
+.namegate input{font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:0}
+.namegate button{font:inherit;font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:14px;padding:8px 14px;border:1px solid var(--line);background:var(--tag);color:var(--tag-ink);cursor:pointer}
+.namegate .ghost{background:var(--surface);color:var(--ink)}
+.namegate .msg{color:var(--no);min-height:1em}
+.allc{max-width:1240px;margin:40px auto 0}
+.allc .list{border:1px solid var(--line);background:var(--surface);font-size:13.5px}
+.allc .item{display:grid;grid-template-columns:150px 1fr auto;gap:12px;padding:8px 12px;border-bottom:1px solid var(--line2);align-items:start}
+.allc .item:last-child{border-bottom:0}
+.allc .item .k{font-family:"Geist Mono",monospace;font-size:11px;color:var(--muted)}
+.allc .item a{font-family:"Geist Mono",monospace;font-size:11px;color:var(--ink)}
+.allc .empty{padding:14px;color:var(--muted);font-size:14px}
+.pill{display:inline-block;font-family:"Geist Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border:1px solid var(--line2);margin-left:6px;vertical-align:1px;color:var(--muted)}
+.pill.open{border-color:var(--ink);color:var(--ink)}
+.pill.approved{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.pill.done{background:var(--bg)}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;display:none;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+.lightbox.show{display:flex}
+.lightbox img{max-width:100%;max-height:100%;object-fit:contain}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){.panel{transition:none}}
+</style></head><body>
+<div class="top">
+<div><div class="eyebrow">Thumbnail Maker statics · 50 remakes · built 2026-11-17</div>
+<h1>Static remakes: original vs 1of10</h1></div>
+<p class="lede">The 50 longest-running competitor statics we chose to iterate on, each next to our Thumbnail Maker version. Press Comment on any ad to leave a note; the owner replies and marks comments approved or done. Everyone with this link sees the same comments. <a href="index.html">Video watchlist</a> · <a href="statics.html">Static watchlist</a> · <a href="scripts.html">Script rewrites</a> · <a href="editor-brief.html">Editor brief</a></p>
+</div>
+<nav class="brands"><div class="navin"><a href="#a-01">01</a><a href="#a-02">02</a><a href="#a-03">03</a><a href="#a-04">04</a><a href="#a-05">05</a><a href="#a-06">06</a><a href="#a-07">07</a><a href="#a-08">08</a><a href="#a-09">09</a><a href="#a-10">10</a><a href="#a-11">11</a><a href="#a-12">12</a><a href="#a-13">13</a><a href="#a-14">14</a><a href="#a-15">15</a><a href="#a-16">16</a><a href="#a-17">17</a><a href="#a-18">18</a><a href="#a-19">19</a><a href="#a-20">20</a><a href="#a-21">21</a><a href="#a-22">22</a><a href="#a-23">23</a><a href="#a-24">24</a><a href="#a-25">25</a><a href="#a-26">26</a><a href="#a-27">27</a><a href="#a-28">28</a><a href="#a-29">29</a><a href="#a-30">30</a><a href="#a-31">31</a><a href="#a-32">32</a><a href="#a-33">33</a><a href="#a-34">34</a><a href="#a-35">35</a><a href="#a-36">36</a><a href="#a-37">37</a><a href="#a-38">38</a><a href="#a-39">39</a><a href="#a-40">40</a><a href="#a-41">41</a><a href="#a-42">42</a><a href="#a-43">43</a><a href="#a-44">44</a><a href="#a-45">45</a><a href="#a-46">46</a><a href="#a-47">47</a><a href="#a-48">48</a><a href="#a-49">49</a><a href="#a-50">50</a><a href="#comments" class="sw">All comments</a></div></nav>
+<div class="bar" id="rbar">
+<label for="reviewer">Your name <input id="reviewer" type="text" placeholder="Type it once" autocomplete="name"></label>
+<button type="button" id="ownerbtn">Owner sign-in</button>
+<span id="modeline">Reviewers: press Comment on any ad.</span>
+<span class="st" id="st">Loading…</span>
+</div>
+<div class="stats">
+<div><b>50</b><span>originals, ranked by days live</span></div>
+<div><b>337</b><span>median days live</span></div>
+<div><b>17</b><span>brands</span></div>
+<div><b>50</b><span>1of10 versions, Thumbnail Maker</span></div>
+</div>
+<div class="intro"><p>Originals come from the 247 live Meta statics on the watchlist (Foreplay pull, 2026-09-17), merged to 140 distinct concepts and ranked by days live, weighted toward brands whose angle carries over to creator tools. Days live is as of the pull date. Our version keeps the original's structure and swaps the message for the Thumbnail Maker; the angle line under each remake is the one-sentence brief it was built from.</p></div>
+<div class="ctl"><div class="counts" id="pfilter"><button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="open" aria-pressed="false">Open comments</button><button type="button" data-f="approved" aria-pressed="false">Approved</button><button type="button" data-f="done" aria-pressed="false">Done</button><button type="button" data-f="none" aria-pressed="false">No comments yet</button></div>
+<input id="q" type="search" placeholder="Search brand, hook or angle" aria-label="Search"><span class="n" id="shown"></span></div>
+<section class="pair cellwrap" id="a-01" data-cell="t50.01" data-brand="canva" data-text="canva enjoy an all-in-one design solution by consolidating multiple design tools into one with canva, fnre scales content production across its office network. customer case study: consolidated tools, scaled output how creators ship more thumbnails per week">
+<header class="ph"><div class="rank">01</div><div class="brandtag">Canva</div><div class="days">498<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=0ya4YOSqoGRZCaBRYORy" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:100.0%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Canva</span><span>498 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24160085936917430/1aff19e90770cfc1fac0c98ee1dc2896.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24160085936917430/1aff19e90770cfc1fac0c98ee1dc2896.jpg"><img loading="lazy" src="https://r2.foreplay.co/24160085936917430/1aff19e90770cfc1fac0c98ee1dc2896.jpg" alt="Canva original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Enjoy an all-in-one design solution</div><div class="b">By consolidating multiple design tools into one with Canva, FNRE scales content production across its office network.</div><div class="k">image · live 498 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Customer case study: consolidated tools, scaled output</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/01.jpg" target="_blank" rel="noopener" data-full="img/top50/01.jpg"><img loading="lazy" src="img/top50/01.jpg" alt="1of10 remake of Canva ad 01"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">How creators ship more thumbnails per week</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-02" data-cell="t50.02" data-brand="descript" data-text="descript make content, fast as lighting.⚡️ whether you’re a solo creator or full marketing team, editing video shouldn’t be rocket science. speed promise + &#x27;for solo creators or full teams&#x27; audience split thumbnail ideas in 90 seconds, not 3 hours">
+<header class="ph"><div class="rank">02</div><div class="brandtag">Descript</div><div class="days">482<small>days live</small></div><div class="fmt">dco · 2 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=RFebidrx1joWS1uirGq5" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:96.8%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Descript</span><span>482 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24174379598835490/72dafaf57f393d4dc8a8bd4ab0ace47e.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24174379598835490/72dafaf57f393d4dc8a8bd4ab0ace47e.jpg"><img loading="lazy" src="https://r2.foreplay.co/24174379598835490/72dafaf57f393d4dc8a8bd4ab0ace47e.jpg" alt="Descript original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Make content, fast as lighting.⚡️</div><div class="b">Whether you’re a solo creator or full marketing team, editing video shouldn’t be rocket science.</div><div class="k">dco · 2 images · live 482 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Speed promise + &#x27;for solo creators or full teams&#x27; audience split</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/02.jpg" target="_blank" rel="noopener" data-full="img/top50/02.jpg"><img loading="lazy" src="img/top50/02.jpg" alt="1of10 remake of Descript ad 02"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Thumbnail ideas in 90 seconds, not 3 hours</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-03" data-cell="t50.03" data-brand="descript" data-text="descript elevate your content without the learning curve. struggling to create professional videos on a tight budget? pro result without the learning curve or budget click-worthy thumbnails, no photoshop needed">
+<header class="ph"><div class="rank">03</div><div class="brandtag">Descript</div><div class="days">476<small>days live</small></div><div class="fmt">dco · 2 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=rm8UNlD1HPNrWLDnuPOX" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:95.6%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Descript</span><span>476 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24037628219188430/b056d578d2b70a0eb64f5ec509f7bcdf.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24037628219188430/b056d578d2b70a0eb64f5ec509f7bcdf.jpg"><img loading="lazy" src="https://r2.foreplay.co/24037628219188430/b056d578d2b70a0eb64f5ec509f7bcdf.jpg" alt="Descript original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Elevate your content without the learning curve.</div><div class="b">Struggling to create professional videos on a tight budget?</div><div class="k">dco · 2 images · live 476 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Pro result without the learning curve or budget</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/03.jpg" target="_blank" rel="noopener" data-full="img/top50/03.jpg"><img loading="lazy" src="img/top50/03.jpg" alt="1of10 remake of Descript ad 03"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Click-worthy thumbnails, no Photoshop needed</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-04" data-cell="t50.04" data-brand="canva" data-text="canva less work, more words create without burnout. &#x27;less work, more x&#x27; plus burnout pain less designing, more clicks">
+<header class="ph"><div class="rank">04</div><div class="brandtag">Canva</div><div class="days">436<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=acRJZzOVjgYiT2zjq2Fc" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:87.6%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Canva</span><span>436 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24219576124345400/7b99a38915c631173d848eea6d6d9b26.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24219576124345400/7b99a38915c631173d848eea6d6d9b26.jpg"><img loading="lazy" src="https://r2.foreplay.co/24219576124345400/7b99a38915c631173d848eea6d6d9b26.jpg" alt="Canva original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Less work, more words</div><div class="b">Create without burnout.</div><div class="k">image · live 436 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> &#x27;Less work, more X&#x27; plus burnout pain</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/04.jpg" target="_blank" rel="noopener" data-full="img/top50/04.jpg"><img loading="lazy" src="img/top50/04.jpg" alt="1of10 remake of Canva ad 04"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Less designing, more clicks</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-05" data-cell="t50.05" data-brand="canva" data-text="canva save hundreds of hours of design time with canva, fnre saves 156 hours on design production annually. hard time-saved stat as the headline save hours on every thumbnail">
+<header class="ph"><div class="rank">05</div><div class="brandtag">Canva</div><div class="days">423<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=y4aUHsDUedQIArmWrSkc" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:84.9%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Canva</span><span>423 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24073064342327504/5b3fb8c1933240763c40415dd326edba.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24073064342327504/5b3fb8c1933240763c40415dd326edba.jpg"><img loading="lazy" src="https://r2.foreplay.co/24073064342327504/5b3fb8c1933240763c40415dd326edba.jpg" alt="Canva original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Save hundreds of hours of design time</div><div class="b">With Canva, FNRE saves 156 hours on design production annually.</div><div class="k">image · live 423 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Hard time-saved stat as the headline</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/05.jpg" target="_blank" rel="noopener" data-full="img/top50/05.jpg"><img loading="lazy" src="img/top50/05.jpg" alt="1of10 remake of Canva ad 05"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Save hours on every thumbnail</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-06" data-cell="t50.06" data-brand="canva" data-text="canva design social posts smarter stay visible online without the daily design grind. stay consistent without the daily grind a new thumbnail every upload, no design grind">
+<header class="ph"><div class="rank">06</div><div class="brandtag">Canva</div><div class="days">420<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=7ztmOWV2Gb3UVM2xiMSc" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:84.3%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Canva</span><span>420 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24517059794564550/ca1338fde4df56b37c398d4028bba38a.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24517059794564550/ca1338fde4df56b37c398d4028bba38a.jpg"><img loading="lazy" src="https://r2.foreplay.co/24517059794564550/ca1338fde4df56b37c398d4028bba38a.jpg" alt="Canva original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Design social posts smarter</div><div class="b">Stay visible online without the daily design grind.</div><div class="k">image · live 420 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Stay consistent without the daily grind</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/06.jpg" target="_blank" rel="noopener" data-full="img/top50/06.jpg"><img loading="lazy" src="img/top50/06.jpg" alt="1of10 remake of Canva ad 06"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">A new thumbnail every upload, no design grind</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-07" data-cell="t50.07" data-brand="descript" data-text="descript never edit alone ai has the skill and judgement to make the video you want. ai as your co-editor (&#x27;never x alone&#x27;) never stare at a blank thumbnail canvas again">
+<header class="ph"><div class="rank">07</div><div class="brandtag">Descript</div><div class="days">414<small>days live</small></div><div class="fmt">dco · 2 images · 2 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=U7TlsuiwsMgi1gkvRNL6" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:83.1%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Descript</span><span>414 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24139901065677490/16ac98fddc2d7a289f22a950ce15e00f.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24139901065677490/16ac98fddc2d7a289f22a950ce15e00f.jpg"><img loading="lazy" src="https://r2.foreplay.co/24139901065677490/16ac98fddc2d7a289f22a950ce15e00f.jpg" alt="Descript original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Never edit alone</div><div class="b">AI has the skill and judgement to make the video you want.</div><div class="k">dco · 2 images · 2 variants · live 414 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> AI as your co-editor (&#x27;never X alone&#x27;)</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/07.jpg" target="_blank" rel="noopener" data-full="img/top50/07.jpg"><img loading="lazy" src="img/top50/07.jpg" alt="1of10 remake of Descript ad 07"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Never stare at a blank thumbnail canvas again</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-08" data-cell="t50.08" data-brand="canva" data-text="canva try canva pro today unlock background remover carousel: one feature per card behind &#x27;try pro&#x27; carousel: generate / edit / style match / upload">
+<header class="ph"><div class="rank">08</div><div class="brandtag">Canva</div><div class="days">410<small>days live</small></div><div class="fmt">carousel · 5 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=VLzBJNpGUHWJme8Zs8MV" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:82.3%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Canva</span><span>410 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/30616863821294490/2a91eacf646137313eb8599cd2ec15e8.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/30616863821294490/2a91eacf646137313eb8599cd2ec15e8.jpg"><img loading="lazy" src="https://r2.foreplay.co/30616863821294490/2a91eacf646137313eb8599cd2ec15e8.jpg" alt="Canva original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Try Canva Pro today</div><div class="b">Unlock Background Remover</div><div class="k">carousel · 5 images · live 410 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Carousel: one feature per card behind &#x27;Try Pro&#x27;</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/08.jpg" target="_blank" rel="noopener" data-full="img/top50/08.jpg"><img loading="lazy" src="img/top50/08.jpg" alt="1of10 remake of Canva ad 08"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Carousel: generate / edit / style match / upload</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-09" data-cell="t50.09" data-brand="canva" data-text="canva sign up for canva teams fewer tools, faster work. short punchy two-part line fewer guesses, more clicks">
+<header class="ph"><div class="rank">09</div><div class="brandtag">Canva</div><div class="days">410<small>days live</small></div><div class="fmt">carousel · 5 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=3KbNS2cFSVrxaoQfEYde" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:82.3%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Canva</span><span>410 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24163329109998430/6741b1960657c31501c8350007a92b13.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24163329109998430/6741b1960657c31501c8350007a92b13.jpg"><img loading="lazy" src="https://r2.foreplay.co/24163329109998430/6741b1960657c31501c8350007a92b13.jpg" alt="Canva original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Sign up for Canva Teams</div><div class="b">Fewer tools, faster work.</div><div class="k">carousel · 5 images · live 410 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Short punchy two-part line</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/09.jpg" target="_blank" rel="noopener" data-full="img/top50/09.jpg"><img loading="lazy" src="img/top50/09.jpg" alt="1of10 remake of Canva ad 09"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Fewer guesses, more clicks</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-10" data-cell="t50.10" data-brand="descript" data-text="descript edit like a pro with descript edit audio, video, text &amp; layout - with one ai-powered tool. multi-image feature tour: one tool replaces many generate, edit, upload: one thumbnail tool">
+<header class="ph"><div class="rank">10</div><div class="brandtag">Descript</div><div class="days">407<small>days live</small></div><div class="fmt">dco · 4 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=jR6QScWp6My7fWJMSQUV" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:81.7%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Descript</span><span>407 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24172034519113770/1cffb0c095dec4496d3fd2734b05a8f3.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24172034519113770/1cffb0c095dec4496d3fd2734b05a8f3.jpg"><img loading="lazy" src="https://r2.foreplay.co/24172034519113770/1cffb0c095dec4496d3fd2734b05a8f3.jpg" alt="Descript original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Edit Like a Pro With Descript</div><div class="b">Edit audio, video, text &amp; layout - with one AI-powered tool.</div><div class="k">dco · 4 images · live 407 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Multi-image feature tour: one tool replaces many</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/10.jpg" target="_blank" rel="noopener" data-full="img/top50/10.jpg"><img loading="lazy" src="img/top50/10.jpg" alt="1of10 remake of Descript ad 10"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Generate, edit, upload: one thumbnail tool</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-11" data-cell="t50.11" data-brand="canva" data-text="canva free and easy video editing me: i’ll just do a quick edit relatable meme: &#x27;me: quick edit / also me: 6 hours later&#x27; me: i&#x27;ll make the thumbnail quickly. also me: 3 hours later">
+<header class="ph"><div class="rank">11</div><div class="brandtag">Canva</div><div class="days">404<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=mRFEytPG1ZXiad96JR27" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:81.1%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Canva</span><span>404 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24126754696980970/a0c95e78b44109fddfeaf7c15bd2f248.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24126754696980970/a0c95e78b44109fddfeaf7c15bd2f248.jpg"><img loading="lazy" src="https://r2.foreplay.co/24126754696980970/a0c95e78b44109fddfeaf7c15bd2f248.jpg" alt="Canva original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Free and easy video editing</div><div class="b">Me: I’ll just do a quick edit</div><div class="k">image · live 404 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Relatable meme: &#x27;Me: quick edit / also me: 6 hours later&#x27;</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/11.jpg" target="_blank" rel="noopener" data-full="img/top50/11.jpg"><img loading="lazy" src="img/top50/11.jpg" alt="1of10 remake of Canva ad 11"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Me: I&#x27;ll make the thumbnail quickly. Also me: 3 hours later</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-12" data-cell="t50.12" data-brand="descript" data-text="descript start editing today. focus on your creative ideas, not the tools. focus on the creative, not the software focus on the video, the thumbnail&#x27;s handled">
+<header class="ph"><div class="rank">12</div><div class="brandtag">Descript</div><div class="days">401<small>days live</small></div><div class="fmt">dco · 3 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=1bdGFCrCBHiKnyNLBDUm" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:80.5%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Descript</span><span>401 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/30849268151383150/b69df2cda43bba9c46d277b902943deb.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/30849268151383150/b69df2cda43bba9c46d277b902943deb.jpg"><img loading="lazy" src="https://r2.foreplay.co/30849268151383150/b69df2cda43bba9c46d277b902943deb.jpg" alt="Descript original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Start editing today.</div><div class="b">Focus on your creative ideas, not the tools.</div><div class="k">dco · 3 images · live 401 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Focus on the creative, not the software</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/12.jpg" target="_blank" rel="noopener" data-full="img/top50/12.jpg"><img loading="lazy" src="img/top50/12.jpg" alt="1of10 remake of Descript ad 12"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Focus on the video, the thumbnail&#x27;s handled</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-13" data-cell="t50.13" data-brand="capcut" data-text="capcut create stunning videos anytime, anywhere bring your ideas to life with powerful yet easy-to-use editing tools. broad aspirational &#x27;anytime, anywhere&#x27; + product ui thumbnails from any idea, anywhere">
+<header class="ph"><div class="rank">13</div><div class="brandtag">CapCut</div><div class="days">371<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=fLKKezGVgBTR5kNzzQ9Q" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:74.5%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · CapCut</span><span>371 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/31262861466662830/33d0de317c743a3c1ff7bab5bad57c47.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/31262861466662830/33d0de317c743a3c1ff7bab5bad57c47.jpg"><img loading="lazy" src="https://r2.foreplay.co/31262861466662830/33d0de317c743a3c1ff7bab5bad57c47.jpg" alt="CapCut original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Create Stunning Videos Anytime, Anywhere</div><div class="b">Bring your ideas to life with powerful yet easy-to-use editing tools.</div><div class="k">image · live 371 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Broad aspirational &#x27;anytime, anywhere&#x27; + product UI</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/13.jpg" target="_blank" rel="noopener" data-full="img/top50/13.jpg"><img loading="lazy" src="img/top50/13.jpg" alt="1of10 remake of CapCut ad 13"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Thumbnails from any idea, anywhere</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-14" data-cell="t50.14" data-brand="hootsuite" data-text="hootsuite unlock social data with owlygpt build stronger social strategies with social-first ai. branded ai assistant unlocking data unlock outlier-trained thumbnails">
+<header class="ph"><div class="rank">14</div><div class="brandtag">Hootsuite</div><div class="days">398<small>days live</small></div><div class="fmt">dco · 3 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=nHxe3kBkg96i8vktabnq" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:79.9%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Hootsuite</span><span>398 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24482853434684010/84f1c7a06e386e1a6518563ae862185e.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24482853434684010/84f1c7a06e386e1a6518563ae862185e.jpg"><img loading="lazy" src="https://r2.foreplay.co/24482853434684010/84f1c7a06e386e1a6518563ae862185e.jpg" alt="Hootsuite original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Unlock Social Data With OwlyGPT</div><div class="b">Build stronger social strategies with social-first AI.</div><div class="k">dco · 3 images · live 398 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Branded AI assistant unlocking data</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/14.jpg" target="_blank" rel="noopener" data-full="img/top50/14.jpg"><img loading="lazy" src="img/top50/14.jpg" alt="1of10 remake of Hootsuite ad 14"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Unlock outlier-trained thumbnails</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-15" data-cell="t50.15" data-brand="capcut" data-text="capcut capcut desktop all-in-one editor for smbs capcut makes editing easy. audience-labelled ad (&#x27;editor for smbs&#x27;) the thumbnail maker for faceless channels">
+<header class="ph"><div class="rank">15</div><div class="brandtag">CapCut</div><div class="days">356<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=aRxvWdWmQoMm4RgzoBYD" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:71.5%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · CapCut</span><span>356 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/25345099608407230/c8df43026af54a76a37a0a90478b662a.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/25345099608407230/c8df43026af54a76a37a0a90478b662a.jpg"><img loading="lazy" src="https://r2.foreplay.co/25345099608407230/c8df43026af54a76a37a0a90478b662a.jpg" alt="CapCut original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">CapCut Desktop All-In-one editor for SMBs</div><div class="b">CapCut makes editing easy.</div><div class="k">image · live 356 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Audience-labelled ad (&#x27;editor for SMBs&#x27;)</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/15.jpg" target="_blank" rel="noopener" data-full="img/top50/15.jpg"><img loading="lazy" src="img/top50/15.jpg" alt="1of10 remake of CapCut ad 15"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">The thumbnail maker for faceless channels</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-16" data-cell="t50.16" data-brand="adobe video" data-text="adobe video try in premiere pro (beta). add frames, lengthen ambient audio, and eliminate awkward cuts with generative extend. feature launch with &#x27;try it now (beta)&#x27; cta new: style match from your channel">
+<header class="ph"><div class="rank">16</div><div class="brandtag">Adobe Video</div><div class="days">354<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=MYpPynQkDH8H6NkA4kvq" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:71.1%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Adobe Video</span><span>354 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/34eaac79dbdc60d62b981047622cb20073cc40d482f428eaf9ea8c998c776929.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/34eaac79dbdc60d62b981047622cb20073cc40d482f428eaf9ea8c998c776929.jpg"><img loading="lazy" src="https://r2.foreplay.co/34eaac79dbdc60d62b981047622cb20073cc40d482f428eaf9ea8c998c776929.jpg" alt="Adobe Video original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Try in Premiere Pro (beta).</div><div class="b">Add frames, lengthen ambient audio, and eliminate awkward cuts with Generative Extend.</div><div class="k">image · live 354 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Feature launch with &#x27;Try it now (beta)&#x27; CTA</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/16.jpg" target="_blank" rel="noopener" data-full="img/top50/16.jpg"><img loading="lazy" src="img/top50/16.jpg" alt="1of10 remake of Adobe Video ad 16"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">New: style match from your channel</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-17" data-cell="t50.17" data-brand="adobe video" data-text="adobe video find your go-to tools fast. click once and the new properties panel makes your go-to tools accessible in one easy-to-use interface. ui close-up highlighting one panel close-up: the edit panel">
+<header class="ph"><div class="rank">17</div><div class="brandtag">Adobe Video</div><div class="days">345<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=FzMUF2C343aZAq2LTGuL" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:69.3%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Adobe Video</span><span>345 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/692459643286067/ebe08496afa88b09e26b345c2daa5bc6.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/692459643286067/ebe08496afa88b09e26b345c2daa5bc6.jpg"><img loading="lazy" src="https://r2.foreplay.co/692459643286067/ebe08496afa88b09e26b345c2daa5bc6.jpg" alt="Adobe Video original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Find your go-to tools fast.</div><div class="b">Click once and the new Properties panel makes your go-to tools accessible in one easy-to-use interface.</div><div class="k">image · live 345 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> UI close-up highlighting one panel</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/17.jpg" target="_blank" rel="noopener" data-full="img/top50/17.jpg"><img loading="lazy" src="img/top50/17.jpg" alt="1of10 remake of Adobe Video ad 17"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Close-up: the edit panel</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-18" data-cell="t50.18" data-brand="capcut" data-text="capcut create now win black friday with capcut desktop seasonal black friday hook black friday: thumbnails for every video">
+<header class="ph"><div class="rank">18</div><div class="brandtag">CapCut</div><div class="days">343<small>days live</small></div><div class="fmt">dco · 2 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=3BdljGRNoG8IXXfZeVH2" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:68.9%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · CapCut</span><span>343 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24520607117610730/a83e24b4030db899a388d21b378bb841.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24520607117610730/a83e24b4030db899a388d21b378bb841.jpg"><img loading="lazy" src="https://r2.foreplay.co/24520607117610730/a83e24b4030db899a388d21b378bb841.jpg" alt="CapCut original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Create Now</div><div class="b">Win Black Friday with CapCut Desktop</div><div class="k">dco · 2 images · live 343 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Seasonal Black Friday hook</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/18.jpg" target="_blank" rel="noopener" data-full="img/top50/18.jpg"><img loading="lazy" src="img/top50/18.jpg" alt="1of10 remake of CapCut ad 18"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Black Friday: thumbnails for every video</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-19" data-cell="t50.19" data-brand="alex hormozi" data-text="alex hormozi $100m money models launch live aug 16 real quick question. what’s your email address? personal &#x27;real quick question&#x27; direct message real quick question: what&#x27;s your ctr?">
+<header class="ph"><div class="rank">19</div><div class="brandtag">Alex Hormozi</div><div class="days">424<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=N8s1uIhTqOcEtbcVe7tv" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:85.1%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Alex Hormozi</span><span>424 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/23987608450898890/995771e242b76e2c3fde3be4473231a7.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/23987608450898890/995771e242b76e2c3fde3be4473231a7.jpg"><img loading="lazy" src="https://r2.foreplay.co/23987608450898890/995771e242b76e2c3fde3be4473231a7.jpg" alt="Alex Hormozi original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">$100M Money Models Launch Live Aug 16</div><div class="b">Real quick question. What’s your email address?</div><div class="k">image · live 424 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Personal &#x27;real quick question&#x27; direct message</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/19.jpg" target="_blank" rel="noopener" data-full="img/top50/19.jpg"><img loading="lazy" src="img/top50/19.jpg" alt="1of10 remake of Alex Hormozi ad 19"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Real quick question: what&#x27;s your CTR?</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-20" data-cell="t50.20" data-brand="alex hormozi" data-text="alex hormozi $100m money models launch live aug 16 here’s something concerning to think about… competitor fear: &#x27;your competitors might be...&#x27; your competitors&#x27; thumbnails get the click">
+<header class="ph"><div class="rank">20</div><div class="brandtag">Alex Hormozi</div><div class="days">424<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=LfnQfiYQ0Fjz1wwoNFF5" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:85.1%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Alex Hormozi</span><span>424 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/23952062461082510/3f18ededf918a840d7ca6f60f1fccb76.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/23952062461082510/3f18ededf918a840d7ca6f60f1fccb76.jpg"><img loading="lazy" src="https://r2.foreplay.co/23952062461082510/3f18ededf918a840d7ca6f60f1fccb76.jpg" alt="Alex Hormozi original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">$100M Money Models Launch Live Aug 16</div><div class="b">Here’s something concerning to think about…</div><div class="k">image · live 424 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Competitor fear: &#x27;your competitors might be...&#x27;</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/20.jpg" target="_blank" rel="noopener" data-full="img/top50/20.jpg"><img loading="lazy" src="img/top50/20.jpg" alt="1of10 remake of Alex Hormozi ad 20"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Your competitors&#x27; thumbnails get the click</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-21" data-cell="t50.21" data-brand="capcut" data-text="capcut capcut desktop enjoy 40% off on first month pro for new users (desktop only) plain discount offer on first month free thumbnail generations to start">
+<header class="ph"><div class="rank">21</div><div class="brandtag">CapCut</div><div class="days">332<small>days live</small></div><div class="fmt">image · 2 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=zuk7RzGAXRjoUKAkFTuT" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:66.7%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · CapCut</span><span>332 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24729959486614750/cc7202fb40aa734eb6cc4a40e94cc62e.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24729959486614750/cc7202fb40aa734eb6cc4a40e94cc62e.jpg"><img loading="lazy" src="https://r2.foreplay.co/24729959486614750/cc7202fb40aa734eb6cc4a40e94cc62e.jpg" alt="CapCut original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">CapCut Desktop</div><div class="b">Enjoy 40% off on first month Pro for new users (Desktop only)</div><div class="k">image · 2 variants · live 332 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Plain discount offer on first month</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/21.jpg" target="_blank" rel="noopener" data-full="img/top50/21.jpg"><img loading="lazy" src="img/top50/21.jpg" alt="1of10 remake of CapCut ad 21"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Free thumbnail generations to start</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-22" data-cell="t50.22" data-brand="capcut" data-text="capcut capcut desktop ai design for everyone. &#x27;design anything by chat&#x27; ai promise describe it, get the thumbnail">
+<header class="ph"><div class="rank">22</div><div class="brandtag">CapCut</div><div class="days">318<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=hXptoUBDKFp0kLlkFlaJ" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:63.9%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · CapCut</span><span>318 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/7ac48096a95159e03ad4f4aeba1ea411c3bd805239f099cc4d72b87ee3585c6b.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/7ac48096a95159e03ad4f4aeba1ea411c3bd805239f099cc4d72b87ee3585c6b.jpg"><img loading="lazy" src="https://r2.foreplay.co/7ac48096a95159e03ad4f4aeba1ea411c3bd805239f099cc4d72b87ee3585c6b.jpg" alt="CapCut original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">CapCut Desktop</div><div class="b">AI Design for everyone.</div><div class="k">image · live 318 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> &#x27;Design anything by chat&#x27; AI promise</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/22.jpg" target="_blank" rel="noopener" data-full="img/top50/22.jpg"><img loading="lazy" src="img/top50/22.jpg" alt="1of10 remake of CapCut ad 22"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Describe it, get the thumbnail</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-23" data-cell="t50.23" data-brand="veed" data-text="veed from prompt → polished video in seconds.  arrow formula: input → output in seconds video title → 3 thumbnail concepts">
+<header class="ph"><div class="rank">23</div><div class="brandtag">VEED</div><div class="days">315<small>days live</small></div><div class="fmt">dco · 2 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=aivDb9BekI6vzHi1pLzP" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:63.3%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · VEED</span><span>315 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/09ae90e4edd2151742d19bd8a56901e7882058b0623bca31b0506bd9efa4a991.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/09ae90e4edd2151742d19bd8a56901e7882058b0623bca31b0506bd9efa4a991.jpg"><img loading="lazy" src="https://r2.foreplay.co/09ae90e4edd2151742d19bd8a56901e7882058b0623bca31b0506bd9efa4a991.jpg" alt="VEED original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">From prompt → polished video in seconds.</div><div class="k">dco · 2 images · live 315 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Arrow formula: input → output in seconds</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/23.jpg" target="_blank" rel="noopener" data-full="img/top50/23.jpg"><img loading="lazy" src="img/top50/23.jpg" alt="1of10 remake of VEED ad 23"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Video title → 3 thumbnail concepts</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-24" data-cell="t50.24" data-brand="vidiq" data-text="vidiq get discovered on youtube 🎥 with vidiq — start today! 🌟 vidiq: ai-powered tools for youtube creators platform-specific growth promise with emoji get clicked on youtube">
+<header class="ph"><div class="rank">24</div><div class="brandtag">vidIQ</div><div class="days">308<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=maTsns6lHkyITGxwt7Lp" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:61.8%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · vidIQ</span><span>308 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/6c2d430b0e7987160b57e7ff1f5a670ab483a2e7de9873b6f236e68f78fc81d7.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/6c2d430b0e7987160b57e7ff1f5a670ab483a2e7de9873b6f236e68f78fc81d7.png"><img loading="lazy" src="https://r2.foreplay.co/6c2d430b0e7987160b57e7ff1f5a670ab483a2e7de9873b6f236e68f78fc81d7.png" alt="vidIQ original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Get Discovered on YouTube 🎥 with vidIQ — Start Today!</div><div class="b">🌟 vidIQ: AI-powered tools for Youtube Creators</div><div class="k">image · live 308 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Platform-specific growth promise with emoji</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/24.jpg" target="_blank" rel="noopener" data-full="img/top50/24.jpg"><img loading="lazy" src="img/top50/24.jpg" alt="1of10 remake of vidIQ ad 24"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Get clicked on YouTube</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-25" data-cell="t50.25" data-brand="skool" data-text="skool get started for free 🔥 unlock the 14-day trial 👉 join 171.9k community builders collectively earning over $1 billion per year on the skool platform today. big social-proof number + free trial 100,000+ creators make thumbnails here">
+<header class="ph"><div class="rank">25</div><div class="brandtag">Skool</div><div class="days">363<small>days live</small></div><div class="fmt">image · 4 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=WvuamEWGKJ9Y2RwZtzv8" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:72.9%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Skool</span><span>363 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/a9eb9044667a71efb9a704d8fc8ebad36a535d033a3e56794994629435830cac.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/a9eb9044667a71efb9a704d8fc8ebad36a535d033a3e56794994629435830cac.png"><img loading="lazy" src="https://r2.foreplay.co/a9eb9044667a71efb9a704d8fc8ebad36a535d033a3e56794994629435830cac.png" alt="Skool original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Get started for FREE 🔥 Unlock the 14-Day Trial</div><div class="b">👉 Join 171.9k community builders collectively earning over $1 billion per year on the Skool platform TODAY.</div><div class="k">image · 4 variants · live 363 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Big social-proof number + free trial</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/25.jpg" target="_blank" rel="noopener" data-full="img/top50/25.jpg"><img loading="lazy" src="img/top50/25.jpg" alt="1of10 remake of Skool ad 25"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">100,000+ creators make thumbnails here</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-26" data-cell="t50.26" data-brand="skool" data-text="skool 🔥 start your free trial now got something you love? passion prompt with emoji list love making videos? hate making thumbnails?">
+<header class="ph"><div class="rank">26</div><div class="brandtag">Skool</div><div class="days">355<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=cJDc10Hop1a7guee5noI" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:71.3%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Skool</span><span>355 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/25567459346243350/d52e330e8a9ba7a5bba46ac7f8205539.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/25567459346243350/d52e330e8a9ba7a5bba46ac7f8205539.jpg"><img loading="lazy" src="https://r2.foreplay.co/25567459346243350/d52e330e8a9ba7a5bba46ac7f8205539.jpg" alt="Skool original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">🔥 Start your FREE trial NOW</div><div class="b">Got something you love?</div><div class="k">image · live 355 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Passion prompt with emoji list</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/26.jpg" target="_blank" rel="noopener" data-full="img/top50/26.jpg"><img loading="lazy" src="img/top50/26.jpg" alt="1of10 remake of Skool ad 26"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Love making videos? Hate making thumbnails?</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-27" data-cell="t50.27" data-brand="slack" data-text="slack resolve issues in slack. rivian saved millions by working smarter in slack. brand-name case study + money saved stop paying designers per thumbnail">
+<header class="ph"><div class="rank">27</div><div class="brandtag">Slack</div><div class="days">349<small>days live</small></div><div class="fmt">image · 3 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=RNWzGraDIEmoxjgynlsw" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:70.1%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Slack</span><span>349 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24350297281319610/888625b7696b913caaa361f7bfd16575.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24350297281319610/888625b7696b913caaa361f7bfd16575.jpg"><img loading="lazy" src="https://r2.foreplay.co/24350297281319610/888625b7696b913caaa361f7bfd16575.jpg" alt="Slack original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Resolve issues in Slack.</div><div class="b">Rivian saved millions by working smarter in Slack.</div><div class="k">image · 3 variants · live 349 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Brand-name case study + money saved</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/27.jpg" target="_blank" rel="noopener" data-full="img/top50/27.jpg"><img loading="lazy" src="img/top50/27.jpg" alt="1of10 remake of Slack ad 27"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Stop paying designers per thumbnail</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-28" data-cell="t50.28" data-brand="adobe video" data-text="adobe video make focused edits, fast. shape masks now keep up with your creativity, tracking up to 20x faster in premiere (beta). speed multiplier stat thumbnails in 90 seconds">
+<header class="ph"><div class="rank">28</div><div class="brandtag">Adobe Video</div><div class="days">255<small>days live</small></div><div class="fmt">image · 2 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=RzXR9H2ucO9fuJvbAtcN" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:51.2%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Adobe Video</span><span>255 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/0f0dc54f6176d1926e8b47299dfc208a7272de955150bba2348e7b3efc0b7edf.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/0f0dc54f6176d1926e8b47299dfc208a7272de955150bba2348e7b3efc0b7edf.png"><img loading="lazy" src="https://r2.foreplay.co/0f0dc54f6176d1926e8b47299dfc208a7272de955150bba2348e7b3efc0b7edf.png" alt="Adobe Video original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Make focused edits, fast.</div><div class="b">Shape masks now keep up with your creativity, tracking up to 20x faster in Premiere (beta).</div><div class="k">image · 2 variants · live 255 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Speed multiplier stat</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/28.jpg" target="_blank" rel="noopener" data-full="img/top50/28.jpg"><img loading="lazy" src="img/top50/28.jpg" alt="1of10 remake of Adobe Video ad 28"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Thumbnails in 90 seconds</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-29" data-cell="t50.29" data-brand="vidiq" data-text="vidiq your 24/7 youtube growth advantage entering 2026 with the same strategy? question hook: &#x27;entering 2026 with the same x?&#x27; entering 2026 with the same thumbnails?">
+<header class="ph"><div class="rank">29</div><div class="brandtag">vidIQ</div><div class="days">244<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=70mDiAn4TjgDtQk5Rj0c" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:49.0%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · vidIQ</span><span>244 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/5bb2148f0e5de9f2ed75bdd731e652f3c109f07a28e807d4e210ad1a5551dc0c.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/5bb2148f0e5de9f2ed75bdd731e652f3c109f07a28e807d4e210ad1a5551dc0c.png"><img loading="lazy" src="https://r2.foreplay.co/5bb2148f0e5de9f2ed75bdd731e652f3c109f07a28e807d4e210ad1a5551dc0c.png" alt="vidIQ original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Your 24/7 YouTube Growth Advantage</div><div class="b">Entering 2026 with the same strategy?</div><div class="k">image · live 244 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Question hook: &#x27;Entering 2026 with the same X?&#x27;</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/29.jpg" target="_blank" rel="noopener" data-full="img/top50/29.jpg"><img loading="lazy" src="img/top50/29.jpg" alt="1of10 remake of vidIQ ad 29"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Entering 2026 with the same thumbnails?</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-30" data-cell="t50.30" data-brand="opusclip" data-text="opusclip get 60 minutes of free credits monthly! try the #1 most popular podcast clipping tool powered by killer ai features: free credits offer + &#x27;#1 tool&#x27; claim try the thumbnail maker free">
+<header class="ph"><div class="rank">30</div><div class="brandtag">OpusClip</div><div class="days">212<small>days live</small></div><div class="fmt">image · 3 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=rjzskuOGcUvrDvVD3dX5" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:42.6%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · OpusClip</span><span>212 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/e0b939057441733c11daa6dbe0ba2c5c02825a782de37efa472d6748f55c2c7c.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/e0b939057441733c11daa6dbe0ba2c5c02825a782de37efa472d6748f55c2c7c.png"><img loading="lazy" src="https://r2.foreplay.co/e0b939057441733c11daa6dbe0ba2c5c02825a782de37efa472d6748f55c2c7c.png" alt="OpusClip original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Get 60 Minutes of Free Credits Monthly!</div><div class="b">Try the #1 most popular podcast clipping tool powered by killer AI features:</div><div class="k">image · 3 variants · live 212 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Free credits offer + &#x27;#1 tool&#x27; claim</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/30.jpg" target="_blank" rel="noopener" data-full="img/top50/30.jpg"><img loading="lazy" src="img/top50/30.jpg" alt="1of10 remake of OpusClip ad 30"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Try the thumbnail maker free</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-31" data-cell="t50.31" data-brand="splice" data-text="splice 50% off ends soon the black friday deal every creator wants. &#x27;the deal every creator wants&#x27; the thumbnail every creator wants">
+<header class="ph"><div class="rank">31</div><div class="brandtag">Splice</div><div class="days">296<small>days live</small></div><div class="fmt">dco · 2 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=wUBCQdUURLxatv0aMzl8" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:59.4%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Splice</span><span>296 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/4b38382111b8d9a057e704a0ee43b2858ae813a5e707348efe5d08d3c4d11403.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/4b38382111b8d9a057e704a0ee43b2858ae813a5e707348efe5d08d3c4d11403.png"><img loading="lazy" src="https://r2.foreplay.co/4b38382111b8d9a057e704a0ee43b2858ae813a5e707348efe5d08d3c4d11403.png" alt="Splice original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">50% Off Ends Soon</div><div class="b">The Black Friday deal every creator wants.</div><div class="k">dco · 2 images · live 296 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> &#x27;The deal every creator wants&#x27;</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/31.jpg" target="_blank" rel="noopener" data-full="img/top50/31.jpg"><img loading="lazy" src="img/top50/31.jpg" alt="1of10 remake of Splice ad 31"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">The thumbnail every creator wants</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-32" data-cell="t50.32" data-brand="ag1" data-text="ag1 welcome to the next gen of wellness 🚨 the next generation of ag1 is here 🚨 big launch announcement the new thumbnail maker is here">
+<header class="ph"><div class="rank">32</div><div class="brandtag">AG1</div><div class="days">403<small>days live</small></div><div class="fmt">dco · 2 images · 2 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=TGD8uQ5QaBLtRdZzzRCo" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:80.9%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · AG1</span><span>403 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/24244598421862130/f43edaeea24ab05352b982224e0deb9d.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/24244598421862130/f43edaeea24ab05352b982224e0deb9d.jpg"><img loading="lazy" src="https://r2.foreplay.co/24244598421862130/f43edaeea24ab05352b982224e0deb9d.jpg" alt="AG1 original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Welcome to the Next Gen of Wellness</div><div class="b">🚨 The Next Generation of AG1 is HERE 🚨</div><div class="k">dco · 2 images · 2 variants · live 403 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Big launch announcement</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/32.jpg" target="_blank" rel="noopener" data-full="img/top50/32.jpg"><img loading="lazy" src="img/top50/32.jpg" alt="1of10 remake of AG1 ad 32"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">The new Thumbnail Maker is here</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-33" data-cell="t50.33" data-brand="adobe video" data-text="adobe video mask anything with a click. say hello to the new ai object mask in premiere and goodbye to hours of painful rotoscoping. &#x27;say hello to x, goodbye to hours of y&#x27; say goodbye to photoshop">
+<header class="ph"><div class="rank">33</div><div class="brandtag">Adobe Video</div><div class="days">159<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=QRjdVh5gG1GiVItsBzKT" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:31.9%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Adobe Video</span><span>159 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/abe1662858a60eb6f38d3e7461abd51d911260a7d1b34d17a3d72138548e18be.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/abe1662858a60eb6f38d3e7461abd51d911260a7d1b34d17a3d72138548e18be.png"><img loading="lazy" src="https://r2.foreplay.co/abe1662858a60eb6f38d3e7461abd51d911260a7d1b34d17a3d72138548e18be.png" alt="Adobe Video original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Mask anything with a click.</div><div class="b">Say hello to the new AI Object Mask in Premiere and goodbye to hours of painful rotoscoping.</div><div class="k">image · live 159 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> &#x27;Say hello to X, goodbye to hours of Y&#x27;</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/33.jpg" target="_blank" rel="noopener" data-full="img/top50/33.jpg"><img loading="lazy" src="img/top50/33.jpg" alt="1of10 remake of Adobe Video ad 33"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Say goodbye to Photoshop</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-34" data-cell="t50.34" data-brand="adobe video" data-text="adobe video your videos, your way. adobe doesn’t claim ownership of your content or use it to train our generative ai models. trust/ownership reassurance commercial license on every thumbnail">
+<header class="ph"><div class="rank">34</div><div class="brandtag">Adobe Video</div><div class="days">159<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=9DPVBgtWMRAmOH3Y1vbS" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:31.9%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Adobe Video</span><span>159 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/7bb0fd76aa2200d60e2eb5d857f806d6455fad995d902c04fb785740de4ccc03.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/7bb0fd76aa2200d60e2eb5d857f806d6455fad995d902c04fb785740de4ccc03.png"><img loading="lazy" src="https://r2.foreplay.co/7bb0fd76aa2200d60e2eb5d857f806d6455fad995d902c04fb785740de4ccc03.png" alt="Adobe Video original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Your videos, your way.</div><div class="b">Adobe doesn’t claim ownership of your content or use it to train our generative AI models.</div><div class="k">image · live 159 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Trust/ownership reassurance</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/34.jpg" target="_blank" rel="noopener" data-full="img/top50/34.jpg"><img loading="lazy" src="img/top50/34.jpg" alt="1of10 remake of Adobe Video ad 34"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Commercial license on every thumbnail</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-35" data-cell="t50.35" data-brand="veed" data-text="veed ai video creation, made for social.  category claim: &#x27;ai x, made for y&#x27; ai thumbnails, made for youtube">
+<header class="ph"><div class="rank">35</div><div class="brandtag">VEED</div><div class="days">153<small>days live</small></div><div class="fmt">dco · 2 images · 5 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=hc0ac3r7tWTw5l7KKwm0" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:30.7%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · VEED</span><span>153 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/1eec5f04316730ceccba0bfc0505dbd92c12ff6517f76ef83bfe03fe41307928.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/1eec5f04316730ceccba0bfc0505dbd92c12ff6517f76ef83bfe03fe41307928.png"><img loading="lazy" src="https://r2.foreplay.co/1eec5f04316730ceccba0bfc0505dbd92c12ff6517f76ef83bfe03fe41307928.png" alt="VEED original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">AI video creation, made for social.</div><div class="k">dco · 2 images · 5 variants · live 153 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Category claim: &#x27;AI X, made for Y&#x27;</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/35.jpg" target="_blank" rel="noopener" data-full="img/top50/35.jpg"><img loading="lazy" src="img/top50/35.jpg" alt="1of10 remake of VEED ad 35"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">AI thumbnails, made for YouTube</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-36" data-cell="t50.36" data-brand="vidiq" data-text="vidiq unlock youtube growth in 2026 stuck at 1,000 subs + 4,000 hours? name the exact stuck point stuck under 4% ctr?">
+<header class="ph"><div class="rank">36</div><div class="brandtag">vidIQ</div><div class="days">140<small>days live</small></div><div class="fmt">image · 2 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=K8wDRMMI2n39o42WtTzu" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:28.1%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · vidIQ</span><span>140 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/9ac9dc0d7c6220ed6714132f2ca21e7f9a456297ad4b99394bd34f7ec512e392.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/9ac9dc0d7c6220ed6714132f2ca21e7f9a456297ad4b99394bd34f7ec512e392.png"><img loading="lazy" src="https://r2.foreplay.co/9ac9dc0d7c6220ed6714132f2ca21e7f9a456297ad4b99394bd34f7ec512e392.png" alt="vidIQ original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Unlock YouTube Growth in 2026</div><div class="b">Stuck at 1,000 subs + 4,000 hours?</div><div class="k">image · 2 variants · live 140 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Name the exact stuck point</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/36.jpg" target="_blank" rel="noopener" data-full="img/top50/36.jpg"><img loading="lazy" src="img/top50/36.jpg" alt="1of10 remake of vidIQ ad 36"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Stuck under 4% CTR?</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-37" data-cell="t50.37" data-brand="hootsuite" data-text="hootsuite ai reputation starts here see how ai shapes your reputation across major llms with insights from hootsuite powered by talkwalkerai. how ai/llms see you thumbnails that match your style">
+<header class="ph"><div class="rank">37</div><div class="brandtag">Hootsuite</div><div class="days">154<small>days live</small></div><div class="fmt">dco · 3 images · 3 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=kTE1RiUmd2adimFuzWxR" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:30.9%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Hootsuite</span><span>154 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/66b342537259a2d06006ec65f168a2cec6abe396c24de67261677e2940da724a.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/66b342537259a2d06006ec65f168a2cec6abe396c24de67261677e2940da724a.png"><img loading="lazy" src="https://r2.foreplay.co/66b342537259a2d06006ec65f168a2cec6abe396c24de67261677e2940da724a.png" alt="Hootsuite original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">AI Reputation Starts Here</div><div class="b">See how AI shapes your reputation across major LLMs with insights from Hootsuite powered by TalkwalkerAI.</div><div class="k">dco · 3 images · 3 variants · live 154 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> How AI/LLMs see you</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/37.jpg" target="_blank" rel="noopener" data-full="img/top50/37.jpg"><img loading="lazy" src="img/top50/37.jpg" alt="1of10 remake of Hootsuite ad 37"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Thumbnails that match your style</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-38" data-cell="t50.38" data-brand="hootsuite" data-text="hootsuite trends powered by human data discover the 2026 trends shaping digital culture, consumer behavior, and brand performance. &#x27;powered by real data&#x27; credibility trained on millions of outliers">
+<header class="ph"><div class="rank">38</div><div class="brandtag">Hootsuite</div><div class="days">154<small>days live</small></div><div class="fmt">dco · 4 images · 6 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=mu0vIIfPUUsgyr29lvxB" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:30.9%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Hootsuite</span><span>154 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/91059071775106b43ef54db4f9e56f4c8796fdcb40fb054f919dd343a4ffa1f0.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/91059071775106b43ef54db4f9e56f4c8796fdcb40fb054f919dd343a4ffa1f0.png"><img loading="lazy" src="https://r2.foreplay.co/91059071775106b43ef54db4f9e56f4c8796fdcb40fb054f919dd343a4ffa1f0.png" alt="Hootsuite original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Trends Powered by Human Data</div><div class="b">Discover the 2026 trends shaping digital culture, consumer behavior, and brand performance.</div><div class="k">dco · 4 images · 6 variants · live 154 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> &#x27;Powered by real data&#x27; credibility</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/38.jpg" target="_blank" rel="noopener" data-full="img/top50/38.jpg"><img loading="lazy" src="img/top50/38.jpg" alt="1of10 remake of Hootsuite ad 38"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Trained on millions of outliers</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-39" data-cell="t50.39" data-brand="transparent labs" data-text="transparent labs what&#x27;s in your protein? do you know what’s in your protein? &#x27;do you know what&#x27;s in your x?&#x27; callout do you know why your thumbnails get skipped?">
+<header class="ph"><div class="rank">39</div><div class="brandtag">Transparent Labs</div><div class="days">345<small>days live</small></div><div class="fmt">dco · 2 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=bUqxzFlVhRj8VdAxgUu2" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:69.3%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Transparent Labs</span><span>345 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/25124557110481970/9d00748af76c1ebb8c44c445ec74d63e.jpg" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/25124557110481970/9d00748af76c1ebb8c44c445ec74d63e.jpg"><img loading="lazy" src="https://r2.foreplay.co/25124557110481970/9d00748af76c1ebb8c44c445ec74d63e.jpg" alt="Transparent Labs original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">What&#x27;s In Your Protein?</div><div class="b">Do you know what’s in your protein?</div><div class="k">dco · 2 images · live 345 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> &#x27;Do you know what&#x27;s in your X?&#x27; callout</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/39.jpg" target="_blank" rel="noopener" data-full="img/top50/39.jpg"><img loading="lazy" src="img/top50/39.jpg" alt="1of10 remake of Transparent Labs ad 39"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Do you know why your thumbnails get skipped?</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-40" data-cell="t50.40" data-brand="clickfunnels" data-text="clickfunnels lifetime deal almost expired! 🚨 your lifetime clickfunnels offer has almost expired 🚨 urgency/expiring offer last call: free thumbnails">
+<header class="ph"><div class="rank">40</div><div class="brandtag">ClickFunnels</div><div class="days">181<small>days live</small></div><div class="fmt">image · 5 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=X0v928M4P5NQwJgU8Rze" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:36.3%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · ClickFunnels</span><span>181 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/8423352c52c0d3a55c53495f8472cc9cbb8d675343d1f6c995054d9c551c2e2b.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/8423352c52c0d3a55c53495f8472cc9cbb8d675343d1f6c995054d9c551c2e2b.png"><img loading="lazy" src="https://r2.foreplay.co/8423352c52c0d3a55c53495f8472cc9cbb8d675343d1f6c995054d9c551c2e2b.png" alt="ClickFunnels original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Lifetime Deal Almost Expired!</div><div class="b">🚨 YOUR LIFETIME CLICKFUNNELS OFFER HAS ALMOST EXPIRED 🚨</div><div class="k">image · 5 variants · live 181 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Urgency/expiring offer</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/40.jpg" target="_blank" rel="noopener" data-full="img/top50/40.jpg"><img loading="lazy" src="img/top50/40.jpg" alt="1of10 remake of ClickFunnels ad 40"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Last call: free thumbnails</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-41" data-cell="t50.41" data-brand="vidiq" data-text="vidiq unlock youtube growth in 2026 🚨 promo alert: 25% off vidiq forever. loud promo alert promo: pro unlocks thumbnails">
+<header class="ph"><div class="rank">41</div><div class="brandtag">vidIQ</div><div class="days">133<small>days live</small></div><div class="fmt">image · 2 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=AXydyhJ67hTN3YdKjbw2" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:26.7%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · vidIQ</span><span>133 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/2d76b2a962eec5a70139f1b18a07d12546fd98658bf9d48d1326bb48e0593aeb.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/2d76b2a962eec5a70139f1b18a07d12546fd98658bf9d48d1326bb48e0593aeb.png"><img loading="lazy" src="https://r2.foreplay.co/2d76b2a962eec5a70139f1b18a07d12546fd98658bf9d48d1326bb48e0593aeb.png" alt="vidIQ original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Unlock YouTube Growth in 2026</div><div class="b">🚨 PROMO ALERT: 25% OFF vidIQ FOREVER.</div><div class="k">image · 2 variants · live 133 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Loud promo alert</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/41.jpg" target="_blank" rel="noopener" data-full="img/top50/41.jpg"><img loading="lazy" src="img/top50/41.jpg" alt="1of10 remake of vidIQ ad 41"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">PROMO: Pro unlocks thumbnails</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-42" data-cell="t50.42" data-brand="opusclip" data-text="opusclip get 60 minutes of free credits monthly! try ai podcast clipping offer carousel, one benefit per card carousel: idea / concepts / upload">
+<header class="ph"><div class="rank">42</div><div class="brandtag">OpusClip</div><div class="days">127<small>days live</small></div><div class="fmt">carousel · 3 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=lVOf3YdYI8lL7Terfora" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:25.5%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · OpusClip</span><span>127 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/e0b939057441733c11daa6dbe0ba2c5c02825a782de37efa472d6748f55c2c7c.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/e0b939057441733c11daa6dbe0ba2c5c02825a782de37efa472d6748f55c2c7c.png"><img loading="lazy" src="https://r2.foreplay.co/e0b939057441733c11daa6dbe0ba2c5c02825a782de37efa472d6748f55c2c7c.png" alt="OpusClip original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Get 60 Minutes of Free Credits Monthly!</div><div class="b">Try AI Podcast Clipping</div><div class="k">carousel · 3 images · live 127 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Offer carousel, one benefit per card</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/42.jpg" target="_blank" rel="noopener" data-full="img/top50/42.jpg"><img loading="lazy" src="img/top50/42.jpg" alt="1of10 remake of OpusClip ad 42"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Carousel: idea / concepts / upload</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-43" data-cell="t50.43" data-brand="vidiq" data-text="vidiq new: vidiq for instagram stop guessing what to post on instagram. &#x27;new: x for y&#x27; + &#x27;stop guessing&#x27; stop guessing what gets clicked">
+<header class="ph"><div class="rank">43</div><div class="brandtag">vidIQ</div><div class="days">122<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=gykpG2x7Dg8YKEm7yp5K" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:24.5%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · vidIQ</span><span>122 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/31301832a1f277bd85bcdf4366ba791a5205b64b02aeaf975979e95f45e8d0e2.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/31301832a1f277bd85bcdf4366ba791a5205b64b02aeaf975979e95f45e8d0e2.png"><img loading="lazy" src="https://r2.foreplay.co/31301832a1f277bd85bcdf4366ba791a5205b64b02aeaf975979e95f45e8d0e2.png" alt="vidIQ original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">New: vidIQ for Instagram</div><div class="b">Stop guessing what to post on Instagram.</div><div class="k">image · live 122 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> &#x27;New: X for Y&#x27; + &#x27;Stop guessing&#x27;</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/43.jpg" target="_blank" rel="noopener" data-full="img/top50/43.jpg"><img loading="lazy" src="img/top50/43.jpg" alt="1of10 remake of vidIQ ad 43"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Stop guessing what gets clicked</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-44" data-cell="t50.44" data-brand="vidiq" data-text="vidiq see where your youtube channel is falling behind what if you knew exactly where a youtube channel is falling behind? diagnostic curiosity: &#x27;see where you&#x27;re falling behind&#x27; see why your thumbnails aren&#x27;t getting clicks">
+<header class="ph"><div class="rank">44</div><div class="brandtag">vidIQ</div><div class="days">68<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=AtzWp2sbROhQLPOmLpf6" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:13.7%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · vidIQ</span><span>68 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/305b49c173e9df8809a103590c0f41974fa1a01f83c779414ad03f4f337a52a9.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/305b49c173e9df8809a103590c0f41974fa1a01f83c779414ad03f4f337a52a9.png"><img loading="lazy" src="https://r2.foreplay.co/305b49c173e9df8809a103590c0f41974fa1a01f83c779414ad03f4f337a52a9.png" alt="vidIQ original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">See Where Your Youtube Channel Is Falling Behind</div><div class="b">What if you knew exactly where a YouTube channel is falling behind?</div><div class="k">image · live 68 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Diagnostic curiosity: &#x27;see where you&#x27;re falling behind&#x27;</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/44.jpg" target="_blank" rel="noopener" data-full="img/top50/44.jpg"><img loading="lazy" src="img/top50/44.jpg" alt="1of10 remake of vidIQ ad 44"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">See why your thumbnails aren&#x27;t getting clicks</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-45" data-cell="t50.45" data-brand="momentous" data-text="momentous fiber is the missing link if your results don’t match your effort, the problem may not be your discipline. reframe: &#x27;it&#x27;s not your discipline, it&#x27;s your x&#x27; it&#x27;s not your video. it&#x27;s your thumbnail.">
+<header class="ph"><div class="rank">45</div><div class="brandtag">Momentous</div><div class="days">169<small>days live</small></div><div class="fmt">dco · 2 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=KWXSqQAHRyncstHawFBt" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:33.9%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Momentous</span><span>169 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/7b55f71ce87efc7998a724ccb40bd96a19aee152b535bd57aea3d8916a6f7dbd.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/7b55f71ce87efc7998a724ccb40bd96a19aee152b535bd57aea3d8916a6f7dbd.png"><img loading="lazy" src="https://r2.foreplay.co/7b55f71ce87efc7998a724ccb40bd96a19aee152b535bd57aea3d8916a6f7dbd.png" alt="Momentous original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Fiber Is the Missing Link</div><div class="b">If your results don’t match your effort, the problem may not be your discipline.</div><div class="k">dco · 2 images · live 169 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Reframe: &#x27;it&#x27;s not your discipline, it&#x27;s your X&#x27;</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/45.jpg" target="_blank" rel="noopener" data-full="img/top50/45.jpg"><img loading="lazy" src="img/top50/45.jpg" alt="1of10 remake of Momentous ad 45"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">It&#x27;s not your video. It&#x27;s your thumbnail.</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-46" data-cell="t50.46" data-brand="opusclip" data-text="opusclip video editor  product ui carousel before/after thumbnail carousel">
+<header class="ph"><div class="rank">46</div><div class="brandtag">OpusClip</div><div class="days">47<small>days live</small></div><div class="fmt">carousel · 3 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=TdYApm3tvehVO9tLpgvW" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:9.4%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · OpusClip</span><span>47 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/45631b80c3b65348f53137575a3b555aa3cd8d12aab672b5f0b3963a2156c9a0.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/45631b80c3b65348f53137575a3b555aa3cd8d12aab672b5f0b3963a2156c9a0.png"><img loading="lazy" src="https://r2.foreplay.co/45631b80c3b65348f53137575a3b555aa3cd8d12aab672b5f0b3963a2156c9a0.png" alt="OpusClip original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Video Editor</div><div class="k">carousel · 3 images · live 47 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Product UI carousel</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/46.jpg" target="_blank" rel="noopener" data-full="img/top50/46.jpg"><img loading="lazy" src="img/top50/46.jpg" alt="1of10 remake of OpusClip ad 46"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Before/after thumbnail carousel</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-47" data-cell="t50.47" data-brand="hubspot" data-text="hubspot be the ai answer buyers are asking ai for recommendations. ai-era shift hook thumbnails, the ai way">
+<header class="ph"><div class="rank">47</div><div class="brandtag">HubSpot</div><div class="days">23<small>days live</small></div><div class="fmt">dco · 3 images · 4 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=x4mQhcEtWLb8zKNN3Z90" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:4.6%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · HubSpot</span><span>23 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/5448862d647601240402f2098a20fd17c845634ea4b6ff9b6d51758edd03b3c7.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/5448862d647601240402f2098a20fd17c845634ea4b6ff9b6d51758edd03b3c7.png"><img loading="lazy" src="https://r2.foreplay.co/5448862d647601240402f2098a20fd17c845634ea4b6ff9b6d51758edd03b3c7.png" alt="HubSpot original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Be The AI Answer</div><div class="b">Buyers are asking AI for recommendations.</div><div class="k">dco · 3 images · 4 variants · live 23 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> AI-era shift hook</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/47.jpg" target="_blank" rel="noopener" data-full="img/top50/47.jpg"><img loading="lazy" src="img/top50/47.jpg" alt="1of10 remake of HubSpot ad 47"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Thumbnails, the AI way</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-48" data-cell="t50.48" data-brand="hubspot" data-text="hubspot 1,000+ free ai prompts ready to scale with ai? free prompt pack lead magnet free: 17 thumbnail formats guide">
+<header class="ph"><div class="rank">48</div><div class="brandtag">HubSpot</div><div class="days">23<small>days live</small></div><div class="fmt">image</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=oaHDJ3nzycdJekuV0oXQ" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:4.6%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · HubSpot</span><span>23 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/cfde94c45c338bfd35e1fe9a6fededae4bffea4a54c0bbd60421db33f1e35dd8.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/cfde94c45c338bfd35e1fe9a6fededae4bffea4a54c0bbd60421db33f1e35dd8.png"><img loading="lazy" src="https://r2.foreplay.co/cfde94c45c338bfd35e1fe9a6fededae4bffea4a54c0bbd60421db33f1e35dd8.png" alt="HubSpot original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">1,000+ Free AI Prompts</div><div class="b">Ready to scale with AI?</div><div class="k">image · live 23 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Free prompt pack lead magnet</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/48.jpg" target="_blank" rel="noopener" data-full="img/top50/48.jpg"><img loading="lazy" src="img/top50/48.jpg" alt="1of10 remake of HubSpot ad 48"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Free: 17 thumbnail formats guide</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-49" data-cell="t50.49" data-brand="vidiq" data-text="vidiq 100 → 55k subs with coach jeff the car guy chronicles with zac. before/after numbers carousel with a named creator old thumbnail vs new: ctr before/after">
+<header class="ph"><div class="rank">49</div><div class="brandtag">vidIQ</div><div class="days">13<small>days live</small></div><div class="fmt">carousel · 3 images</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=h6NTIwFMUx5VdzN2OKu2" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:2.6%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · vidIQ</span><span>13 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/a37a30cfa1f9e5fe60246e47c5c3abd6a96bdc06e4bbe92ef3b5918f3d4be770.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/a37a30cfa1f9e5fe60246e47c5c3abd6a96bdc06e4bbe92ef3b5918f3d4be770.png"><img loading="lazy" src="https://r2.foreplay.co/a37a30cfa1f9e5fe60246e47c5c3abd6a96bdc06e4bbe92ef3b5918f3d4be770.png" alt="vidIQ original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">100 → 55K subs with Coach Jeff</div><div class="b">The Car Guy Chronicles With Zac.</div><div class="k">carousel · 3 images · live 13 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Before/after numbers carousel with a named creator</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/49.jpg" target="_blank" rel="noopener" data-full="img/top50/49.jpg"><img loading="lazy" src="img/top50/49.jpg" alt="1of10 remake of vidIQ ad 49"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">Old thumbnail vs new: CTR before/after</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section><section class="pair cellwrap" id="a-50" data-cell="t50.50" data-brand="slack" data-text="slack get time back with slack 2 hours a day x 5 days a week x 52 weeks a year = your most productive year ever. time math equation 2 hrs/thumbnail x 52 uploads = 104 hrs">
+<header class="ph"><div class="rank">50</div><div class="brandtag">Slack</div><div class="days">8<small>days live</small></div><div class="fmt">image · 2 variants</div>
+<div class="links"><a href="https://app.foreplay.co/discovery?ad=QgLJWR6w84TOt60q7dtg" target="_blank" rel="noopener">Foreplay ↗</a><div class="tools"><button type="button" class="cm" title="Comments on this ad">Comment</button></div></div></header>
+<div class="life" aria-hidden="true"><i style="width:1.6%"></i></div>
+<div class="cols">
+<div class="col o"><div class="lbl"><span>Original · Slack</span><span>8 days live</span></div>
+<a class="im" href="https://r2.foreplay.co/7459862ecd6112b62d2a8c579c699a7b93dd2f9d6d9907fa7f8089b8647c67f3.png" target="_blank" rel="noopener" data-full="https://r2.foreplay.co/7459862ecd6112b62d2a8c579c699a7b93dd2f9d6d9907fa7f8089b8647c67f3.png"><img loading="lazy" src="https://r2.foreplay.co/7459862ecd6112b62d2a8c579c699a7b93dd2f9d6d9907fa7f8089b8647c67f3.png" alt="Slack original ad"><span class="zoom">Full size</span></a>
+<div class="cap"><div class="h">Get time back with Slack</div><div class="b">2 hours a day x 5 days a week x 52 weeks a year = Your most productive year ever.</div><div class="k">image · 2 variants · live 8 days as of 2026-09-17</div><div class="pat"><b>Why it works:</b> Time math equation</div></div></div>
+<div class="col u"><div class="lbl"><span>1of10 version</span><span>Thumbnail Maker</span></div>
+<a class="im" href="img/top50/50.jpg" target="_blank" rel="noopener" data-full="img/top50/50.jpg"><img loading="lazy" src="img/top50/50.jpg" alt="1of10 remake of Slack ad 50"><span class="zoom">Full size</span></a>
+<div class="cap"><span class="prod">Thumbnail Maker</span><div class="angle">2 hrs/thumbnail x 52 uploads = 104 hrs</div><div class="k">Angle carried over from the original. Export at 1080x1350 (4:5).</div></div></div>
+</div></section>
+<section class="allc" id="comments"><h2>All comments</h2>
+<div class="ctl" style="margin-top:10px"><div class="counts" id="allfilter"><button type="button" data-f="open" aria-pressed="true">Open</button><button type="button" data-f="approved" aria-pressed="false">Approved</button><button type="button" data-f="done" aria-pressed="false">Done</button><button type="button" data-f="all" aria-pressed="false">All</button></div><span class="n" id="allcount"></span></div>
+<div class="list" id="alllist" style="margin-top:10px"><div class="empty">Loading…</div></div></section>
+<aside class="panel" id="panel" aria-label="Comments"><header><h3>Comments</h3><button type="button" id="pclose">Close</button></header>
+<div class="ctx" id="ctx"></div><div class="thread" id="thread"></div>
+<div class="compose"><div class="row" id="replyline" hidden><span id="replyto"></span><button type="button" class="lnk" id="replycancel">Cancel reply</button></div>
+<textarea id="ctext" placeholder="What should change? Be specific: copy, image, layout, offer."></textarea>
+<div class="row"><span>Cmd/Ctrl+Enter to post</span><button type="button" id="csend">Post comment</button></div></div></aside>
+<div class="namegate" id="namegate"><div class="box"><h3>Your name</h3><p>Shown next to your comments so Artur knows who said what. Asked once per browser.</p><input id="gatename" type="text" placeholder="First name is fine" autocomplete="name"><button type="button" id="gateok">Continue</button></div></div>
+<div class="namegate" id="ownergate"><div class="box"><h3>Owner sign-in</h3><p>Enter the owner passphrase to reply as owner and approve or close comments.</p><input id="ownersecret" type="password" placeholder="Passphrase" autocomplete="off"><div class="msg" id="ownermsg"></div><div style="display:flex;gap:8px"><button type="button" id="ownerok">Sign in</button><button type="button" class="ghost" id="ownercancel">Cancel</button></div></div></div>
+<div class="lightbox" id="lightbox" aria-hidden="true"><img alt=""></div>
+<script>
+(function(){
+  var CFG={"url": "https://hnccgckufixgcnctmdea.supabase.co", "anon": "sb_publishable_EsrUCu6FDvhEH1CZaka6dA_ONpmJzM3"}, LABEL={"t50.01": "#01 · Canva · 498 days live", "t50.02": "#02 · Descript · 482 days live", "t50.03": "#03 · Descript · 476 days live", "t50.04": "#04 · Canva · 436 days live", "t50.05": "#05 · Canva · 423 days live", "t50.06": "#06 · Canva · 420 days live", "t50.07": "#07 · Descript · 414 days live", "t50.08": "#08 · Canva · 410 days live", "t50.09": "#09 · Canva · 410 days live", "t50.10": "#10 · Descript · 407 days live", "t50.11": "#11 · Canva · 404 days live", "t50.12": "#12 · Descript · 401 days live", "t50.13": "#13 · CapCut · 371 days live", "t50.14": "#14 · Hootsuite · 398 days live", "t50.15": "#15 · CapCut · 356 days live", "t50.16": "#16 · Adobe Video · 354 days live", "t50.17": "#17 · Adobe Video · 345 days live", "t50.18": "#18 · CapCut · 343 days live", "t50.19": "#19 · Alex Hormozi · 424 days live", "t50.20": "#20 · Alex Hormozi · 424 days live", "t50.21": "#21 · CapCut · 332 days live", "t50.22": "#22 · CapCut · 318 days live", "t50.23": "#23 · VEED · 315 days live", "t50.24": "#24 · vidIQ · 308 days live", "t50.25": "#25 · Skool · 363 days live", "t50.26": "#26 · Skool · 355 days live", "t50.27": "#27 · Slack · 349 days live", "t50.28": "#28 · Adobe Video · 255 days live", "t50.29": "#29 · vidIQ · 244 days live", "t50.30": "#30 · OpusClip · 212 days live", "t50.31": "#31 · Splice · 296 days live", "t50.32": "#32 · AG1 · 403 days live", "t50.33": "#33 · Adobe Video · 159 days live", "t50.34": "#34 · Adobe Video · 159 days live", "t50.35": "#35 · VEED · 153 days live", "t50.36": "#36 · vidIQ · 140 days live", "t50.37": "#37 · Hootsuite · 154 days live", "t50.38": "#38 · Hootsuite · 154 days live", "t50.39": "#39 · Transparent Labs · 345 days live", "t50.40": "#40 · ClickFunnels · 181 days live", "t50.41": "#41 · vidIQ · 133 days live", "t50.42": "#42 · OpusClip · 127 days live", "t50.43": "#43 · vidIQ · 122 days live", "t50.44": "#44 · vidIQ · 68 days live", "t50.45": "#45 · Momentous · 169 days live", "t50.46": "#46 · OpusClip · 47 days live", "t50.47": "#47 · HubSpot · 23 days live", "t50.48": "#48 · HubSpot · 23 days live", "t50.49": "#49 · vidIQ · 13 days live", "t50.50": "#50 · Slack · 8 days live"};
+  var status=document.getElementById('st');
+  function setStatus(t,cls){status.textContent=t;status.className='st '+(cls||'');}
+  var cells={}; document.querySelectorAll('.cellwrap').forEach(function(w){cells[w.getAttribute('data-cell')]=w;});
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function fmt(ts){try{var d=new Date(ts);return d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})+', '+d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});}catch(e){return '';}}
+  // ---- lightbox ----
+  var lb=document.getElementById('lightbox'), lbimg=lb.querySelector('img');
+  document.querySelectorAll('a.im[data-full]').forEach(function(a){a.addEventListener('click',function(ev){ if(ev.metaKey||ev.ctrlKey)return; ev.preventDefault(); lbimg.src=a.getAttribute('data-full'); lb.classList.add('show'); });});
+  lb.addEventListener('click',function(){lb.classList.remove('show'); lbimg.src='';});
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'){lb.classList.remove('show'); closePanel();}});
+  // ---- name ----
+  var NKEY='1of10-scripts-name'; var name='';
+  try{name=localStorage.getItem(NKEY)||'';}catch(e){}
+  var nameInput=document.getElementById('reviewer'); nameInput.value=name;
+  nameInput.addEventListener('change',function(){name=nameInput.value.trim();try{localStorage.setItem(NKEY,name);}catch(e){}});
+  var gate=document.getElementById('namegate'), gateIn=document.getElementById('gatename'), gateAfter=null;
+  function needName(cb){ if(name){cb();return;} gateAfter=cb; gate.classList.add('show'); setTimeout(function(){gateIn.focus();},50); }
+  document.getElementById('gateok').addEventListener('click',function(){var v=gateIn.value.trim(); if(!v)return; name=v; nameInput.value=v; try{localStorage.setItem(NKEY,v);}catch(e){} gate.classList.remove('show'); var cb=gateAfter; gateAfter=null; if(cb)cb();});
+  gateIn.addEventListener('keydown',function(ev){if(ev.key==='Enter')document.getElementById('gateok').click();});
+  // ---- supabase rest ----
+  var live=!!(CFG.url&&CFG.anon);
+  function api(path,opts){opts=opts||{};var h={'apikey':CFG.anon,'Content-Type':'application/json'}; if(CFG.anon.indexOf('eyJ')===0) h['Authorization']='Bearer '+CFG.anon; if(opts.prefer)h['Prefer']=opts.prefer;
+    return fetch(CFG.url+'/rest/v1/'+path,{method:opts.method||'GET',headers:h,body:opts.body?JSON.stringify(opts.body):undefined}).then(function(r){return r.text().then(function(t){ if(!r.ok){var msg=t; try{msg=JSON.parse(t).message||t;}catch(e){} throw new Error(r.status+' '+msg);} return t?JSON.parse(t):null; });});}
+  function rpc(fn,args){return api('rpc/'+fn,{method:'POST',body:args});}
+  // ---- owner ----
+  var SKEY='1of10-scripts-owner'; var secret=''; var isOwner=false; var confirmSignOut=false;
+  try{secret=localStorage.getItem(SKEY)||'';}catch(e){}
+  var ownerBtn=document.getElementById('ownerbtn'), ogate=document.getElementById('ownergate'), ogIn=document.getElementById('ownersecret'), ogMsg=document.getElementById('ownermsg');
+  function setOwner(on){ isOwner=on; document.body.classList.toggle('owner',on); ownerBtn.textContent=on?'Signed in as owner':'Owner sign-in';
+    document.getElementById('modeline').textContent=on?'You can reply to comments and mark them approved or done.':'Reviewers: press Comment on any ad. Replies and status changes are the owner’s.';
+    renderThread(); }
+  function verifyOwner(s,cb){ if(!live){cb(false);return;} rpc('check_owner',{p_secret:s}).then(function(ok){cb(ok===true);}).catch(function(){cb(false);}); }
+  ownerBtn.addEventListener('click',function(){ if(isOwner){ if(!confirmSignOut){confirmSignOut=true; ownerBtn.textContent='Click again to sign out'; setTimeout(function(){confirmSignOut=false; if(isOwner)ownerBtn.textContent='Signed in as owner';},2500); return;} secret=''; try{localStorage.removeItem(SKEY);}catch(e){} setOwner(false); return; }
+    ogMsg.textContent=''; ogIn.value=''; ogate.classList.add('show'); setTimeout(function(){ogIn.focus();},50); });
+  document.getElementById('ownerok').addEventListener('click',function(){ var s=ogIn.value; if(!s)return; ogMsg.textContent='Checking…';
+    verifyOwner(s,function(ok){ if(ok){secret=s; try{localStorage.setItem(SKEY,s);}catch(e){} ogate.classList.remove('show'); setOwner(true); setStatus('Signed in as owner','on');} else {ogMsg.textContent='That passphrase did not match.';} }); });
+  document.getElementById('ownercancel').addEventListener('click',function(){ogate.classList.remove('show');});
+  ogIn.addEventListener('keydown',function(ev){if(ev.key==='Enter')document.getElementById('ownerok').click();});
+  // ---- comments ----
+  var comments=[]; var panel=document.getElementById('panel'), thread=document.getElementById('thread'), ctx=document.getElementById('ctx'), openKey=null, replyTo=null;
+  function isOpen(c){return (c.status||'open')==='open';}
+  function tops(key){return comments.filter(function(c){return c.cell_key===key&&!c.parent_id;});}
+  function replies(id){return comments.filter(function(c){return c.parent_id===id;});}
+  function stateOf(key){var list=tops(key); if(!list.length)return 'none'; if(list.some(isOpen))return 'open'; if(list.some(function(c){return c.status==='approved';}))return 'approved'; return 'done';}
+  function renderBadges(){ Object.keys(cells).forEach(function(k){var w=cells[k];var b=w.querySelector('.cm');var list=tops(k);var open=list.filter(isOpen).length;var appr=list.filter(function(c){return c.status==='approved';}).length;
+    b.textContent=list.length?(open?open+' open':(appr?'approved':'done')):'Comment'; b.classList.toggle('has',list.length>0); b.classList.toggle('open',open>0); b.classList.toggle('appr',open===0&&appr>0); w.setAttribute('data-state',stateOf(k));});
+    renderAll(); applyFilter(); }
+  function pill(c){var s=c.status||'open'; var t=s==='open'?'Open':(s==='approved'?'Approved':'Done'); var by=c.status_by?(' by '+esc(c.status_by)+(c.status_at?' · '+fmt(c.status_at):'')):''; return '<span class="pill '+s+'" title="'+by.replace(/"/g,'')+'">'+t+'</span>';}
+  function cHtml(c,isReply){ return '<div class="c'+(isReply?' reply':'')+(c.status==='done'?' resolved':'')+'" data-id="'+c.id+'"><div class="who"><span>'+esc(c.author||'Anonymous')+(isReply?'':' '+pill(c))+'</span><small>'+fmt(c.created_at)+'</small></div><div class="txt">'+esc(c.body)+'</div>'
+    +(isReply?'':'<div class="act"><button type="button" data-act="reply">Reply</button>'+(isOwner?'<button type="button" data-act="approved"'+(c.status==='approved'?' disabled':'')+'>Approve</button><button type="button" data-act="done"'+(c.status==='done'?' disabled':'')+'>Mark done</button>'+(c.status!=='open'?'<button type="button" data-act="open">Reopen</button>':''):'')+'</div>')
+    +(isReply?'':replies(c.id).map(function(r){return cHtml(r,true);}).join(''))+'</div>'; }
+  function renderThread(){ if(!openKey)return; var list=tops(openKey);
+    ctx.innerHTML='<b>'+esc(LABEL[openKey]||openKey)+'</b>'+esc(cells[openKey].querySelector('.angle').textContent);
+    thread.innerHTML=list.length?list.map(function(c){return cHtml(c,false);}).join(''):'<div class="empty" style="color:var(--muted);font-size:13.5px">No comments on this ad yet.</div>';
+    document.getElementById('replyline').hidden=!replyTo; if(replyTo){var p=comments.find(function(x){return x.id===replyTo;}); document.getElementById('replyto').textContent=p?('Replying to '+(p.author||'Anonymous')):'';}
+    thread.scrollTop=thread.scrollHeight; }
+  function openPanel(key){ if(openKey&&cells[openKey])cells[openKey].classList.remove('target'); openKey=key; replyTo=null; cells[key].classList.add('target'); panel.classList.add('open'); renderThread(); document.getElementById('ctext').focus(); }
+  function closePanel(){ if(openKey&&cells[openKey])cells[openKey].classList.remove('target'); openKey=null; replyTo=null; panel.classList.remove('open'); }
+  document.getElementById('pclose').addEventListener('click',closePanel);
+  document.getElementById('replycancel').addEventListener('click',function(){replyTo=null;renderThread();});
+  document.querySelectorAll('.cm').forEach(function(b){b.addEventListener('click',function(){openPanel(b.closest('.cellwrap').getAttribute('data-cell'));});});
+  thread.addEventListener('click',function(ev){var b=ev.target.closest('button[data-act]'); if(!b)return; var id=Number(b.closest('.c').getAttribute('data-id')); var act=b.getAttribute('data-act');
+    if(act==='reply'){replyTo=id; renderThread(); document.getElementById('ctext').focus(); return;}
+    if(!live||!isOwner)return;
+    rpc('set_comment_status',{p_id:id,p_status:act,p_by:name||'Owner',p_secret:secret}).then(function(){var c=comments.find(function(x){return x.id===id;}); if(c){c.status=act;c.status_by=act==='open'?null:(name||'Owner');c.status_at=act==='open'?null:new Date().toISOString();} renderBadges(); renderThread();})
+      .catch(function(err){setStatus('Could not update comment: '+err.message.slice(0,60),'err');});});
+  var ctext=document.getElementById('ctext'), csend=document.getElementById('csend');
+  csend.addEventListener('click',function(){ var body=ctext.value.trim(); if(!body||!openKey)return; if(!live){setStatus('Not connected: comments cannot be saved','err');return;}
+    needName(function(){ csend.disabled=true; var key=openKey; var payload={cell_key:key,author:name,body:body}; if(replyTo)payload.parent_id=replyTo;
+      api('script_comments',{method:'POST',prefer:'return=representation',body:payload}).then(function(rows){ comments.push(rows[0]); ctext.value=''; replyTo=null; renderBadges(); renderThread(); })
+      .catch(function(err){setStatus('Could not post: '+err.message.slice(0,80),'err');}).then(function(){csend.disabled=false;}); }); });
+  ctext.addEventListener('keydown',function(ev){if((ev.metaKey||ev.ctrlKey)&&ev.key==='Enter')csend.click();});
+  function loadComments(){ if(!live)return Promise.resolve(); return api('script_comments?select=id,cell_key,author,body,created_at,status,status_by,status_at,parent_id&cell_key=like.t50.*&order=created_at.asc').then(function(rows){comments=rows; renderBadges(); if(openKey)renderThread();}); }
+  // ---- all comments list ----
+  var allFilter='open';
+  function renderAll(){ var el=document.getElementById('alllist'); var all=comments.filter(function(c){return !c.parent_id;});
+    var n={open:0,approved:0,done:0}; all.forEach(function(c){n[c.status||'open']=(n[c.status||'open']||0)+1;});
+    document.getElementById('allcount').textContent=n.open+' open · '+n.approved+' approved · '+n.done+' done';
+    document.querySelectorAll('#allfilter button').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===allFilter?'true':'false');});
+    var list=all.filter(function(c){return allFilter==='all'||(c.status||'open')===allFilter;});
+    el.innerHTML=list.length?list.slice().reverse().map(function(c){var rc=replies(c.id).length; return '<div class="item"><div><div class="k">'+esc(c.author||'Anonymous')+'</div><div class="k">'+fmt(c.created_at)+'</div><div>'+pill(c)+'</div></div><div>'+esc(c.body)+(rc?'<div class="k" style="margin-top:4px">'+rc+(rc===1?' reply':' replies')+'</div>':'')+'</div><a href="#" data-go="'+esc(c.cell_key)+'">'+esc(LABEL[c.cell_key]||c.cell_key)+' →</a></div>';}).join(''):'<div class="empty">Nothing here.</div>'; }
+  document.getElementById('allfilter').addEventListener('click',function(ev){var b=ev.target.closest('button[data-f]'); if(!b)return; allFilter=b.getAttribute('data-f'); renderAll();});
+  document.getElementById('alllist').addEventListener('click',function(ev){var a=ev.target.closest('a[data-go]'); if(!a)return; ev.preventDefault(); var k=a.getAttribute('data-go'); if(cells[k]){cells[k].scrollIntoView({block:'start'}); openPanel(k);} });
+  // ---- page filter ----
+  var pf='all', q=''; var Q=document.getElementById('q');
+  function applyFilter(){ var shown=0; Object.keys(cells).forEach(function(k){var w=cells[k]; var st=w.getAttribute('data-state')||'none';
+    var ok=(pf==='all')||(pf==='none'?st==='none':st===pf); if(ok&&q)ok=(w.getAttribute('data-text')||'').indexOf(q)>=0; w.classList.toggle('hide',!ok); if(ok)shown++;});
+    document.getElementById('shown').textContent=shown+' of '+Object.keys(cells).length+' shown'; }
+  document.getElementById('pfilter').addEventListener('click',function(ev){var b=ev.target.closest('button[data-f]'); if(!b)return; pf=b.getAttribute('data-f'); document.querySelectorAll('#pfilter button').forEach(function(z){z.setAttribute('aria-pressed',z===b?'true':'false');}); applyFilter();});
+  Q.addEventListener('input',function(){q=Q.value.trim().toLowerCase(); applyFilter();});
+  // ---- boot ----
+  setOwner(false); applyFilter();
+  if(!live){ setStatus('Not connected to a database yet: read-only','err'); return; }
+  setStatus('Connecting…');
+  loadComments().then(function(){setStatus('Live: comments sync for everyone','on'); if(secret){verifyOwner(secret,function(ok){ if(ok)setOwner(true); else {secret='';try{localStorage.removeItem(SKEY);}catch(e){}} });}})
+    .catch(function(err){setStatus('Could not reach the database: '+err.message.slice(0,60),'err');});
+  setInterval(function(){ if(document.hidden)return; loadComments().catch(function(){}); },8000);
+  if(location.hash){var k='t50.'+location.hash.replace('#a-',''); if(cells[k])setTimeout(function(){openPanel(k);},300);}
+})();
+</script>
+</body></html>

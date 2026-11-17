@@ -127,6 +127,8 @@ nav.brands a.sw{margin-left:auto;color:var(--muted)}
 .lightbox.show{display:flex}
 .lightbox img{max-width:100%;max-height:100%;object-fit:contain}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+body.popen{padding-right:calc(16px + min(380px,100vw))}
+@media (max-width:900px){body.popen{padding-right:16px;padding-bottom:74vh}.panel{top:auto;left:0;right:0;bottom:0;width:100%;max-height:72vh;border-left:0;border-top:2px solid var(--line);transform:translateY(105%)}.panel .thread{min-height:120px}}
 @media (prefers-reduced-motion: reduce){.panel{transition:none}}
 </style></head><body>
 <div class="top">
@@ -771,8 +773,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     thread.innerHTML=list.length?list.map(function(c){return cHtml(c,false);}).join(''):'<div class="empty" style="color:var(--muted);font-size:13.5px">No comments on this ad yet.</div>';
     document.getElementById('replyline').hidden=!replyTo; if(replyTo){var p=comments.find(function(x){return x.id===replyTo;}); document.getElementById('replyto').textContent=p?('Replying to '+(p.author||'Anonymous')):'';}
     thread.scrollTop=thread.scrollHeight; }
-  function openPanel(key){ if(openKey&&cells[openKey])cells[openKey].classList.remove('target'); openKey=key; replyTo=null; cells[key].classList.add('target'); panel.classList.add('open'); renderThread(); document.getElementById('ctext').focus(); }
-  function closePanel(){ if(openKey&&cells[openKey])cells[openKey].classList.remove('target'); openKey=null; replyTo=null; panel.classList.remove('open'); }
+  function openPanel(key){ if(openKey&&cells[openKey])cells[openKey].classList.remove('target'); openKey=key; replyTo=null; cells[key].classList.add('target'); panel.classList.add('open'); document.body.classList.add('popen'); renderThread(); setTimeout(function(){cells[key].scrollIntoView({block:'start',behavior:'smooth'});},60); if(window.innerWidth>900)document.getElementById('ctext').focus(); }
+  function closePanel(){ if(openKey&&cells[openKey])cells[openKey].classList.remove('target'); openKey=null; replyTo=null; panel.classList.remove('open'); document.body.classList.remove('popen'); }
   document.getElementById('pclose').addEventListener('click',closePanel);
   document.getElementById('replycancel').addEventListener('click',function(){replyTo=null;renderThread();});
   document.querySelectorAll('.cm').forEach(function(b){b.addEventListener('click',function(){openPanel(b.closest('.cellwrap').getAttribute('data-cell'));});});
